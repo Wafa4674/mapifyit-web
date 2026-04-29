@@ -21,7 +21,7 @@ export default function SiteLayout({
       <div className="min-h-screen bg-[#03060D] text-slate-300 font-sans">
         <Navbar />
         {children}
-        <WhatsAppButton />
+        {/* <WhatsAppButton /> */}
         <Footer />
       </div>
     </>
