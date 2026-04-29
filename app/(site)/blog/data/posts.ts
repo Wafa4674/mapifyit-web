@@ -13,7 +13,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "mapifyit-maps-gis-enterprise-alternative",
+    slug: "why-mapify-is-the-best-maps-alternative-to-google-maps-and-mapbox",
     title: "MapifyIt Maps & GIS: The Complete Enterprise Alternative to Google Maps, Mapbox, and Traditional GIS Platforms",
     excerpt: "Location is no longer just a feature—it’s infrastructure. From logistics and ride-hailing to delivery, fintech, and smart cities, modern applications depend heavily on mapping APIs.",
     category: "Industry Insights",

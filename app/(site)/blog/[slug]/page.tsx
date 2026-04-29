@@ -65,7 +65,7 @@ export default async function BlogPostDetail({ params }: Props) {
 
     const renderContent = () => {
         switch (slug) {
-            case "mapifyit-maps-gis-enterprise-alternative":
+            case "why-mapify-is-the-best-maps-alternative-to-google-maps-and-mapbox":
                 return (
                     <div className="space-y-32 pb-32">
                         {/* 1. Intro Section */}
