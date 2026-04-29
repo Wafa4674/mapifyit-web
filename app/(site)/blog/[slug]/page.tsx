@@ -67,7 +67,7 @@ export default async function BlogPostDetail({ params }: Props) {
         switch (slug) {
             case "why-mapify-is-the-best-maps-alternative-to-google-maps-and-mapbox":
                 return (
-                    <div className="space-y-32 pb-32">
+                    <div className="space-y-8 pb-20">
                         {/* 1. Intro Section */}
                         <Reveal delay={100}>
                             <section className="bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 rounded-[40px] p-8 md:p-16 backdrop-blur-2xl relative overflow-hidden">
@@ -184,7 +184,7 @@ export default async function BlogPostDetail({ params }: Props) {
                         {/* 4. Why Traditional Platforms Break */}
                         <Reveal delay={400}>
                             <section>
-                                <SectionHeader title="Why Traditional Platforms Break at Scale" subtitle="Most companies plug in an API to move fast, but once usage grows, the cracks start to show." />
+                                <SectionHeader title="Why Traditional Mapping Platforms Start Breaking at Scale" subtitle="Most companies don’t think about mapping infrastructure early on. They just plug in an API and move fast" />
                                 <div className="grid md:grid-cols-2 gap-8">
                                     {[
                                         { t: "1. Unpredictable API Costs", d: "Every map load, route request, or geocoding call adds to your bill. At scale, this becomes one of your biggest expenses." },
@@ -213,10 +213,10 @@ export default async function BlogPostDetail({ params }: Props) {
                                 <SectionHeader centered title="How MapifyIt Solves These Problems" subtitle="Designed from the ground up to remove industry-standard limitations." />
                                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                                     {[
-                                        { t: "Full Infrastructure Control", d: "Deploy on your own servers or private cloud for complete ownership." },
-                                        { t: "Predictable Costs", d: "Scale based on infrastructure, making costs predictable at high volume." },
-                                        { t: "Deep Customization", d: "Tailor routing logic, search behavior, and map styles to your business." },
-                                        { t: "Independence", d: "Better control over performance, data, and compliance without 3rd party reliance." }
+                                        { t: "Full Infrastructure Control", d: "You can deploy MapifyIt on your own servers, private cloud, or hybrid setup. This gives you complete ownership of your mapping stack" },
+                                        { t: "Predictable Costs", d: "Instead of paying per API call endlessly, you can scale based on infrastructure—making costs more predictable at high volume" },
+                                        { t: "Deep Customization", d: "Routing logic, search behavior, map styles, and analytics can all be tailored to your business." },
+                                        { t: "Independence", d: "No reliance on Google or Mapbox means better control over performance, data, and compliance." }
                                     ].map((item, i) => (
                                         <div key={i} className="text-center">
                                             <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-6">
@@ -274,8 +274,8 @@ export default async function BlogPostDetail({ params }: Props) {
                                     {[
                                         { t: "Spatial Analytics", d: "Heatmaps, clustering, and density analysis for large datasets.", icon: BarChart3 },
                                         { t: "Terrain & Raster", d: "Elevation models, satellite imagery, and complex geographic data.", icon: Layers },
-                                        { t: "Real-Time Tracking", d: "Track vehicles, assets, and teams with live updates.", icon: Navigation },
-                                        { t: "Location Intelligence", d: "Turn raw location data into actionable insights.", icon: Target }
+                                        { t: "Real-Time Tracking", d: "Track vehicles, assets, and teams with live updates and geographic boundaries.", icon: Navigation },
+                                        { t: "Location Intelligence", d: "Turn raw location data into actionable insights for operations, planning, and optimization.", icon: Target }
                                     ].map((item, i) => (
                                         <div key={i} className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all text-center group">
                                             <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
@@ -292,7 +292,7 @@ export default async function BlogPostDetail({ params }: Props) {
                         {/* 8. Comparison Table */}
                         <Reveal delay={800}>
                             <section>
-                                <SectionHeader title="MapifyIt vs Industry Leaders" subtitle="This is where things become clear. A direct comparison of cost, deployment, and ownership." />
+                                <SectionHeader title="MapifyIt vs Google Maps vs Mapbox vs Esri" subtitle="This is where things become clear." />
                                 <div className="overflow-x-auto rounded-[40px] border border-white/10 bg-white/[0.02]">
                                     <table className="w-full border-collapse">
                                         <thead>
@@ -304,7 +304,7 @@ export default async function BlogPostDetail({ params }: Props) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <ComparisonRow label="Cost Structure" mapifyit="Predictable Infrastructure Pricing" competitors="Usage-based (Expensive)" />
+                                            <ComparisonRow label="Cost Structure" mapifyit="MapifyIt → Predictable, scalable pricing with infrastructure control" competitors="Usage-based pricing (can become expensive fast)" />
                                             <ComparisonRow label="Deployment" mapifyit="Cloud + On-Premise + Hybrid" competitors="Cloud-only" />
                                             <ComparisonRow label="Customization" mapifyit="Full Engine Control" competitors="Limited parameters" />
                                             <ComparisonRow label="GIS Capabilities" mapifyit="Advanced + Integrated" competitors="Basic / Minimal" />
@@ -321,11 +321,11 @@ export default async function BlogPostDetail({ params }: Props) {
                                 <SectionHeader centered title="Real-World Use Cases" subtitle="Powering critical infrastructure across diverse industries." />
                                 <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
                                     {[
-                                        { t: "Logistics", d: "Route optimization & fleet tracking.", icon: Truck },
-                                        { t: "Mobility", d: "Driver tracking & ETA systems.", icon: Car },
-                                        { t: "Workforce", d: "Task assignment & monitoring.", icon: Users },
-                                        { t: "Smart Cities", d: "Infrastructure & traffic analysis.", icon: Building2 },
-                                        { t: "Agriculture", d: "Land usage & satellite insights.", icon: Sprout }
+                                        { t: "Logistics", d: "Route optimization, fleet tracking & Cost reduction", icon: Truck },
+                                        { t: "Ride-Hailing & Mobility Apps", d: "Driver tracking, Navigation Systems & ETA calculations", icon: Car },
+                                        { t: "Field Workforce Management", d: "Task assignment based on location & Live monitoring of teams", icon: Users },
+                                        { t: "Smart Cities & Urban Planning", d: "Infrastructure visualization & Population & trffic analysis", icon: Building2 },
+                                        { t: "Agriculture & Environmental Monitoring", d: "Land usage insights & Satellite data analysis", icon: Sprout }
                                     ].map((item, i) => (
                                         <div key={i} className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
                                             <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
@@ -343,9 +343,9 @@ export default async function BlogPostDetail({ params }: Props) {
                         <Reveal delay={1000}>
                             <section className="grid lg:grid-cols-2 gap-12 items-center p-10 md:p-20 rounded-[60px] border border-white/10 bg-gradient-to-br from-white/[0.03] to-transparent">
                                 <div>
-                                    <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">The Cost Advantage at Scale</h2>
+                                    <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Cost Advantage at Scale</h2>
                                     <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                                        One of the biggest reasons companies switch is cost. High-volume systems shouldn't be penalized for their success.
+                                        One of the biggest reasons companies switch is cost.
                                     </p>
                                     <div className="space-y-6">
                                         <div className="flex gap-4">
@@ -353,7 +353,7 @@ export default async function BlogPostDetail({ params }: Props) {
                                                 <Minus className="text-red-500 w-6 h-6" />
                                             </div>
                                             <div>
-                                                <h4 className="font-bold text-white mb-1">Traditional Providers</h4>
+                                                <h4 className="font-bold text-white mb-1">Traditional Providers:</h4>
                                                 <p className="text-slate-500 text-sm italic">Costs increase linearly with usage. High-volume systems become extremely expensive.</p>
                                             </div>
                                         </div>
@@ -362,7 +362,7 @@ export default async function BlogPostDetail({ params }: Props) {
                                                 <CheckCircle2 className="text-emerald-400 w-6 h-6" />
                                             </div>
                                             <div>
-                                                <h4 className="font-bold text-white mb-1">MapifyIt Approach</h4>
+                                                <h4 className="font-bold text-white mb-1">With MapifyIt</h4>
                                                 <p className="text-slate-500 text-sm italic">Infrastructure-based scaling reduces marginal cost. High usage becomes significantly more efficient.</p>
                                             </div>
                                         </div>
@@ -419,8 +419,8 @@ export default async function BlogPostDetail({ params }: Props) {
                         </Reveal>
 
                         {/* 13. Final Thoughts */}
-                        {/* <Reveal delay={1300}>
-                            <section className="p-10 md:p-20 rounded-[60px] bg-gradient-to-br from-blue-600 to-indigo-600 text-center relative overflow-hidden">
+                        <Reveal delay={1300}>
+                            <section className="p-5 md:p-10 rounded-[60px] bg-gradient-to-br from-blue-550 to-indigo-600 text-center relative overflow-hidden">
                                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                                 <div className="relative z-10">
                                     <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Final Thoughts</h2>
@@ -432,10 +432,10 @@ export default async function BlogPostDetail({ params }: Props) {
                                     </Link>
                                 </div>
                             </section>
-                        </Reveal> */}
+                        </Reveal>
 
                         {/* 14. FAQs */}
-                        <Reveal delay={1400}>
+                        <Reveal delay={1350}>
                             <section>
                                 <SectionHeader centered title="Frequently Asked Questions" />
                                 <div className="max-w-7xl">
@@ -463,7 +463,7 @@ export default async function BlogPostDetail({ params }: Props) {
     return (
         <main className="min-h-screen bg-[#030712] text-white overflow-hidden relative pb-20">
             {/* Header / Hero */}
-            <header className="relative pt-32 pb-20 border-b border-white/5">
+            <header className="relative pt-32 pb-10 border-b border-white/5">
                 <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -483,9 +483,9 @@ export default async function BlogPostDetail({ params }: Props) {
                             </div>
                             <span className="text-slate-600 text-xs uppercase tracking-widest">{post.date}</span>
                         </div>
-                        <h1 className="text-4xl md:text-7xl font-bold mb-8 tracking-tight leading-[1.1] text-white">
+                        <h3 className="text-2xl md:text-5xl font-bold mb-4 tracking-tight leading-[1.1] text-white">
                             {post.title}
-                        </h1>
+                        </h3>
                         <p className="text-xl text-slate-400 max-w-4xl font-light leading-relaxed">
                             {post.excerpt}
                         </p>
@@ -493,7 +493,7 @@ export default async function BlogPostDetail({ params }: Props) {
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-6 pt-20">
+            <div className="max-w-7xl mx-auto px-6 pt-10">
                 {renderContent()}
             </div>
         </main>

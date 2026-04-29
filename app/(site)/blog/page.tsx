@@ -29,42 +29,48 @@ export default function BlogPage() {
                 </section>
 
                 {/* Single Post Display */}
-                <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {blogPosts.map((post) => (
                         <Reveal key={post.slug}>
-                            <article className="group bg-white/5 p-8 md:p-12 rounded-[40px] border border-white/10 hover:border-blue-500/30 transition-all duration-500 backdrop-blur-xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[80px] -mr-32 -mt-32 rounded-full" />
+                            <article className="group h-full flex flex-col bg-white/5 p-6 md:p-8 rounded-[32px] border border-white/10 hover:border-blue-500/30 transition-all duration-500 backdrop-blur-xl relative overflow-hidden">
+                                {/* Subtle light effect */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] -mr-16 -mt-16 rounded-full" />
 
-                                <div className="flex items-center gap-4 mb-8">
-                                    <span className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-wider text-blue-400">
+                                {/* Header: Category & Time */}
+                                <div className="flex items-center gap-3 mb-6">
+                                    <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold uppercase tracking-wider text-blue-400">
                                         {post.category}
                                     </span>
-                                    <div className="flex items-center gap-1.5 text-slate-500 text-sm">
-                                        <Clock className="w-4 h-4" /> {post.readTime}
+                                    <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                                        <Clock className="w-3.5 h-3.5" /> {post.readTime}
                                     </div>
                                 </div>
 
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors leading-[1.2]">
+                                {/* Content */}
+                                <h2 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors leading-tight">
                                     {post.title}
                                 </h2>
 
-                                <p className="text-slate-400 text-lg mb-10 leading-relaxed line-clamp-3">
+                                <p className="text-slate-400 text-sm md:text-base mb-8 leading-relaxed line-clamp-3 flex-grow">
                                     {post.excerpt}
                                 </p>
 
-                                <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                                {/* Footer */}
+                                <div className="flex items-center justify-between pt-6 border-t border-white/5 mt-auto">
                                     <Link
                                         href={`/blog/${post.slug}`}
-                                        className="inline-flex items-center gap-3 text-white text-xl font-bold hover:gap-5 transition-all duration-300"
+                                        className="inline-flex items-center gap-2 text-white text-base font-bold hover:gap-4 transition-all duration-300"
                                     >
-                                        Read Full Article <ArrowRight className="w-6 h-6 text-blue-400" />
+                                        Read More <ArrowRight className="w-5 h-5 text-blue-400" />
                                     </Link>
-                                    <span className="text-sm font-medium text-slate-500 uppercase tracking-[0.2em]">{post.date}</span>
+                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{post.date}</span>
                                 </div>
                             </article>
                         </Reveal>
                     ))}
+
                 </div>
+
             </div>
         </main>
     );
