@@ -300,7 +300,7 @@ export default async function BlogPostDetail({ params }: Props) {
                                                 <th className="py-8 px-8 text-left text-sm font-bold uppercase tracking-widest text-slate-500">Feature</th>
                                                 <th className="py-8 px-8 text-left text-sm font-bold uppercase tracking-widest text-blue-400">MapifyIt</th>
                                                 <th className="py-8 px-8 text-left text-sm font-bold uppercase tracking-widest text-slate-500">Google/Mapbox</th>
-                                                <th className="py-8 px-8 text-left text-sm font-bold uppercase tracking-widest text-slate-500">Esri</th>
+                                                {/* <th className="py-8 px-8 text-left text-sm font-bold uppercase tracking-widest text-slate-500">Esri</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
