@@ -102,7 +102,22 @@ export default async function BlogPostDetail({ params }: Props) {
                         {/* 2. What is MapifyIt? */}
                         <Reveal delay={200}>
                             <section>
-                                <SectionHeader title="What is MapifyIt?" subtitle="MapifyIt is a full-stack mapping and GIS platform designed for businesses that want to build, scale, and control their own geospatial infrastructure." />
+                                <SectionHeader
+                                    title="What is MapifyIt?"
+                                    subtitle={
+                                        <span>
+                                            <a
+                                                href="https://mapifyit.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-400 hover:underline"
+                                            >
+                                                MapifyIt
+                                            </a>
+                                            &nbsp; is a full-stack mapping and GIS platform designed for businesses that want to build, scale, and control their own geospatial infrastructure.
+                                        </span>
+                                    }
+                                />
                                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                                     <div className="space-y-6">
                                         <p className="text-slate-400 text-lg leading-relaxed">
@@ -407,12 +422,12 @@ export default async function BlogPostDetail({ params }: Props) {
                         <Reveal delay={1200}>
                             <section className="max-w-7xl mx-auto">
                                 <SectionHeader centered title="Why MapifyIt is More Than Just a Maps API" />
-                                <p className="text-slate-400 text-xl leading-relaxed mb-12">
+                                <p className="text-slate-400 text-xl leading-relaxed mb-12 text-center max-w-3xl mx-auto">
                                     Most tools stop at visualization. MapifyIt goes further by combining Mapping, APIs, GIS, and Real-time systems into one complete location intelligence platform.
                                 </p>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {["Mapping", "APIs", "GIS", "Real-Time"].map((word, i) => (
-                                        <div key={i} className="px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold tracking-widest">{word}</div>
+                                        <div key={i} className="px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold tracking-widest text-center">{word}</div>
                                     ))}
                                 </div>
                             </section>
@@ -420,7 +435,7 @@ export default async function BlogPostDetail({ params }: Props) {
 
                         {/* 13. Final Thoughts */}
                         <Reveal delay={1300}>
-                            <section className="p-5 md:p-10 rounded-[60px] bg-gradient-to-br from-blue-550 to-indigo-600 text-center relative overflow-hidden">
+                            <section className="p-5 md:p-10 rounded-[60px] bg-gradient-to-br from-blue-600 to-indigo-600 text-center relative overflow-hidden">
                                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                                 <div className="relative z-10">
                                     <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Final Thoughts</h2>
@@ -483,9 +498,9 @@ export default async function BlogPostDetail({ params }: Props) {
                             </div>
                             <span className="text-slate-600 text-xs uppercase tracking-widest">{post.date}</span>
                         </div>
-                        <h3 className="text-2xl md:text-5xl font-bold mb-4 tracking-tight leading-[1.1] text-white">
+                        <h1 className="text-2xl md:text-5xl font-bold mb-4 tracking-tight leading-[1.1] text-white">
                             {post.title}
-                        </h3>
+                        </h1>
                         <p className="text-xl text-slate-400 max-w-4xl font-light leading-relaxed">
                             {post.excerpt}
                         </p>
