@@ -20,9 +20,9 @@ export default function Hero() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6 md:mb-8 leading-[1.1]">
-            Geospatial Data Platform for GIS &nbsp;<br className="hidden md:block" />
+            Best Google Maps & Mapbox  &nbsp;<br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-              Mapping, and Location Intelligence.
+              Alternative in the USA – MapifyIt
             </span>
           </h1>
 

@@ -15,23 +15,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mapifyit | Enterprise Location Intelligence Platform",
+    default: "Top Google Maps & Mapbox Alternative in USA | MapifyIt",
     template: "%s | Mapifyit",
   },
   description:
-    "Mapifyit is an enterprise-grade mapping and location intelligence platform built for accuracy, control, and mission-critical scale. Deploy sovereign GIS, fleet tracking, field force management, and identity verification on your own infrastructure.",
+    "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
   keywords: [
-    "location intelligence",
-    "GIS platform",
-    "enterprise mapping",
-    "fleet management system",
-    "field force tracking",
-    "eKYC identity verification",
-    "spatial analytics",
-    "on-premise mapping",
-    "geofencing",
-    "route optimization",
-    "Mapifyit",
+    "Google map alternative USA",
+    "Mapbox alternative USA",
+    "MapifyIt GIS platform",
+    "GIS platform USA",
+    "Enterprise mapping solutions USA",
+    "Geospatial platform alternative Google Maps",
   ],
   authors: [{ name: "Mapifyit" }],
   creator: "Mapifyit",
@@ -42,9 +37,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://mapifyit.com",
     siteName: "Mapifyit",
-    title: "Mapifyit | Enterprise Location Intelligence Platform",
+    title: "Top Google Maps & Mapbox Alternative in USA | MapifyIt",
     description:
-      "Sovereign enterprise mapping, GIS analytics, fleet tracking, and identity verification. Built for performance. Priced for control.",
+      "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: [
       {
         url: "/fullwhitebackground logo.png",
@@ -56,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mapifyit | Enterprise Location Intelligence",
+    title: "Top Google Maps & Mapbox Alternative in USA | MapifyIt",
     description:
-      "Sovereign enterprise mapping, GIS analytics, fleet tracking, and identity verification. Built for performance. Priced for control.",
+      "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: ["/fullwhitebackground logo.png"],
     creator: "@mapifyit",
   },
