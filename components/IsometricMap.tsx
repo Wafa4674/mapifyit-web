@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function GlobalRadarMap() {
     return (
@@ -31,17 +32,18 @@ export default function GlobalRadarMap() {
             <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden">
                 <div className="w-[100%] h-[100%] relative transition-transform duration-1000 group-hover:scale-105">
 
-                    {/* World Map SVG Background (Replace URL with your own local SVG if preferred) */}
-                    <div
-                        className="absolute inset-0 z-0 opacity-60"
-                        style={{
-                            backgroundImage: `url('/HDbackground.png')`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                            filter: 'drop-shadow(0px 0px 15px rgba(59,130,246,0.3))'
-                        }}
-                    />
+                    {/* World Map Background - Next.js Optimized */}
+                    <div className="absolute inset-0 z-0 opacity-60">
+                        <Image
+                            src="/HDbackground.png"
+                            alt="Background Map"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                            className="object-cover pointer-events-none"
+                            priority={false}
+                            style={{ filter: 'drop-shadow(0px 0px 15px rgba(59,130,246,0.3))' }}
+                        />
+                    </div>
 
                     {/* Radar Scanner Beam */}
                     <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-blue-500/10 to-blue-400/40 border-r-2 border-blue-400 blur-[1px] animate-radar z-20 shadow-[10px_0_50px_rgba(59,130,246,0.5)]" />

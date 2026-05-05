@@ -1,8 +1,19 @@
+"use client";
 import React from 'react';
 import { ShieldCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
-import IsometricMap from './IsometricMap';
-import PhoneMockup from './PhoneMockup';
+import dynamic from 'next/dynamic';
+
+// Lazy load heavy visual components
+const IsometricMap = dynamic(() => import('./IsometricMap'), { 
+  ssr: false,
+  loading: () => <div className="mt-12 h-[300px] w-full animate-pulse rounded-2xl bg-slate-800/50" />
+});
+
+const PhoneMockup = dynamic(() => import('./PhoneMockup'), { 
+  ssr: false,
+  loading: () => <div className="h-[600px] w-[300px] animate-pulse rounded-[3rem] bg-slate-800/50 mx-auto" />
+});
 
 /**
  * Hero Section: The flagship visual component of the landing page.
@@ -63,7 +74,6 @@ export default function Hero() {
       <div className="mt-10 lg:mt-10">
         <div className="text-center mb-12">
           <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>
-          {/* <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-transparent mx-auto" /> */}
         </div>
         <div className="max-w-6xl mx-auto">
           <IsometricMap />
