@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Real-Time Fleet Management System",
+    title: "Fleet Management System & GPS Tracking USA",
     description:
-        "Mapifyit FMS FleetSense provides sub-meter GPS tracking, fuel monitoring, driver behavior analytics, and AI-driven predictive maintenance in a unified enterprise fleet management dashboard.",
+        "Fleet management system with maps in USA. Real-time GPS fleet tracking, route optimization, delivery software, and logistics tracking platform.",
     keywords: [
-        "fleet management system",
-        "GPS vehicle tracking",
-        "real-time fleet tracking",
-        "fuel monitoring",
-        "driver behavior analytics",
-        "telematics platform",
-        "predictive maintenance",
-        "route optimization fleet",
-        "enterprise fleet software",
-        "FMS fleet sense",
+        "fleet management system with maps in USA",
+        "GPS fleet tracking software USA",
+        "real-time fleet tracking platform USA",
+        "fleet tracking API usa",
+        "logistics tracking platform USA",
+        "delivery fleet management software USA",
+        "route optimization for fleet",
+        "usa",
+
     ],
     openGraph: {
-        title: "Real-Time Fleet Management System | Mapifyit",
+        title: "Fleet Management System & GPS Tracking USA",
         description:
-            "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
+            "Fleet management system with maps in USA. Real-time GPS fleet tracking, route optimization, delivery software, and logistics tracking platform.",
         url: "https://mapifyit.com/fleet-management-system",
     },
     twitter: {
-        title: "Real-Time Fleet Management System | Mapifyit",
+        title: "Fleet Management System & GPS Tracking USA",
         description:
-            "Monitor, optimize, and secure your entire fleet in real-time with sub-meter GPS accuracy, predictive maintenance, and driver performance analytics.",
+            "Fleet management system with maps in USA. Real-time GPS fleet tracking, route optimization, delivery software, and logistics tracking platform.",
     },
     alternates: {
         canonical: "https://mapifyit.com/fleet-management-system",

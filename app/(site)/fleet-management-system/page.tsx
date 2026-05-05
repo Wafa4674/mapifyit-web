@@ -84,8 +84,8 @@ const Hero = () => {
                             </span>
                             MapifyIt FMS 2.0 is Live
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
-                            Fleet Management<p><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2F80FF] to-[#4DA3FF]">System</span></p>
+                        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+                            Fleet Management System<p><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2F80FF] to-[#4DA3FF]">with Real-Time GPS Tracking USA</span></p>
                         </h1>
                         <p className="text-lg md:text-xl text-[#A0A8B3] mb-8 leading-relaxed max-w-xl">
                             MapifyIt’s Fleet Management System (FMS) is an enterprise-grade solution for organizations managing large-scale vehicle fleets, logistics operations, and mission-critical transportation. The platform combines real-time GPS vehicle tracking, AI-driven route optimization, predictive maintenance, fuel monitoring, and driver behavior analytics into a secure, sovereign dashboard with zero third-party data exposure. Fleet operators gain complete visibility and control across vehicles, drivers, routes, and assets, enabling smarter fleet decisions, lower operational costs, and safer operations.

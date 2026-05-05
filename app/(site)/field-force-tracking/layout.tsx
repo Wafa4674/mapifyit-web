@@ -1,34 +1,29 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Field Force Tracking & Mobile Workforce",
+    title: "Field Force Tracking Software & GPS Tracking USA",
     description:
-        "Enterprise-grade Field Force Tracking (FFT) solution with real-time GPS tracking, geofence attendance automation, intelligent task dispatching, and secure on-premises deployment options.",
+        "Field force tracking software in USA with real-time employee tracking, GPS workforce tracking, field service management, and mobile workforce platform.",
     keywords: [
-        "Field Force Tracking",
-        "Mobile Workforce Tracking",
-        "Field Employee GPS Tracking",
-        "Field Service Workforce Management",
-        "Agent Tracking Software",
-        "Field Team Tracking System",
-        "On-Premises Field Tracking",
-        "Secure Workforce Management",
-        "Enterprise Data Privacy",
-        "Self-Hosted SaaS",
-        "FFT",
-        "location-based attendance",
-        "field operations software",
+        "field force tracking software usa",
+        "field staff tracking system USA",
+        "real-time employee tracking app USA",
+        "field service management system usa",
+        "sales team tracking software usa",
+        "workforce tracking with GPS usa",
+        "mobile workforce management platform USA",
+        "field operations tracking system usa",
     ],
     openGraph: {
-        title: "FFT | Field Force Tracking | Mapifyit",
+        title: "Field Force Tracking Software & GPS Tracking USA",
         description:
-            "Track live agent movements, automate attendance with geofencing, and optimize task distribution for mobile field teams.",
+            "Field force tracking software in USA with real-time employee tracking, GPS workforce tracking, field service management, and mobile workforce platform.",
         url: "https://mapifyit.com/field-force-tracking",
     },
     twitter: {
-        title: "FFT | Field Force Tracking | Mapifyit",
+        title: "Field Force Tracking Software & GPS Tracking USA",
         description:
-            "Track live agent movements, automate attendance with geofencing, and optimize task distribution for mobile field teams.",
+            "Field force tracking software in USA with real-time employee tracking, GPS workforce tracking, field service management, and mobile workforce platform.",
     },
     alternates: {
         canonical: "https://mapifyit.com/field-force-tracking",

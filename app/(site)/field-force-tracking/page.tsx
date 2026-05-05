@@ -87,9 +87,9 @@ const Hero = () => (
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F141A] border border-[#1F2933] text-[#4DA3FF] text-sm font-medium mb-6">
                     <Globe size={14} /> Global Enterprise Ready
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-                    Field Force <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2F80FF] to-[#4DA3FF]">Tracking</span>
+                <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                    Field Force Tracking Software <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2F80FF] to-[#4DA3FF]">with Real-Time GPS USA</span>
                 </h1>
                 <p className="text-lg text-[#A0A8B3] mb-8 leading-relaxed max-w-xl">
                     Mobile Workforce Intelligence is an enterprise-grade Field Force Tracking (FFT) solution designed to give organizations complete real-time visibility of their mobile workforce. With advanced GPS tracking, geofence-based attendance automation, intelligent task dispatching, and productivity analytics, businesses can efficiently manage field teams and improve operational performance.
