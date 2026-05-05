@@ -15,7 +15,7 @@
     {
       "@type": "Offer",
       "name": "Starter",
-      "price": "149",
+      "price": "189",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "description": "Up to 75k calls/month"
@@ -23,7 +23,7 @@
     {
       "@type": "Offer",
       "name": "Business",
-      "price": "399",
+      "price": "749",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "description": "Up to 250k calls/month"
@@ -31,7 +31,7 @@
     {
       "@type": "Offer",
       "name": "Enterprise",
-      "price": "899",
+      "price": "1499",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "description": "Up to 750k calls/month"

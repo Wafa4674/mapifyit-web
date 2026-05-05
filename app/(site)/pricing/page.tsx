@@ -69,9 +69,9 @@ export default function PricingPage() {
         "description": "Predictable flat-rate pricing for enterprise mapping APIs. Transparent location intelligence infrastructure with no vendor lock-in.",
         "offers": [
             { "@type": "Offer", "name": "Free Tier", "price": "0", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 10k calls/month" },
-            { "@type": "Offer", "name": "Starter", "price": "149", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 75k calls/month" },
-            { "@type": "Offer", "name": "Business", "price": "399", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 250k calls/month" },
-            { "@type": "Offer", "name": "Enterprise", "price": "899", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 750k calls/month" }
+            { "@type": "Offer", "name": "Starter", "price": "189", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 75k calls/month" },
+            { "@type": "Offer", "name": "Business", "price": "749", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 250k calls/month" },
+            { "@type": "Offer", "name": "Enterprise", "price": "1499", "priceCurrency": "USD", "eligibilityToPurchase": "Up to 750k calls/month" }
         ]
     };
 
@@ -127,7 +127,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Starter"
-                                price="$149"
+                                price="$189"
                                 highlightedText="75,000 monthly calls"
                                 description="For growing apps needing reliability."
                                 icon={Target}
@@ -135,7 +135,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Business"
-                                price="$399"
+                                price="$749"
                                 highlightedText="250,000 monthly calls"
                                 description="For apps serving thousands of users."
                                 icon={Star}
@@ -144,7 +144,7 @@ export default function PricingPage() {
                             />
                             <PricingCard
                                 title="Enterprise"
-                                price="$899"
+                                price="$1499"
                                 highlightedText="750,000+ monthly calls"
                                 description="Bespoke infrastructure for global scale."
                                 icon={Crown}
@@ -187,21 +187,21 @@ export default function PricingPage() {
                                     </tr>
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-semibold text-white">Starter <span className="text-xs text-slate-500 font-normal ml-2">(75k calls)</span></td>
-                                        <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$149</td>
+                                        <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$189</td>
                                         <td className="px-8 py-5">$225 <span className="text-xs text-slate-500 block mt-1">(Starter + Overage)</span></td>
                                         <td className="px-8 py-5">$195 <span className="text-xs text-slate-500 block mt-1">(Loads + Temp Search)</span></td>
                                     </tr>
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-semibold text-white">Business <span className="text-xs text-slate-500 font-normal ml-2">(250k calls)</span></td>
                                         <td className="px-8 py-5 bg-blue-500/[0.04] border-x border-blue-500/20 text-blue-400 font-bold text-base flex items-center gap-3">
-                                            $399 <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[10px] uppercase font-black tracking-widest leading-none hidden md:block">Best Value</span>
+                                            $749 <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[10px] uppercase font-black tracking-widest leading-none hidden md:block">Best Value</span>
                                         </td>
                                         <td className="px-8 py-5">$1,200 <span className="text-xs text-slate-500 block mt-1">(Pro Plan)</span></td>
                                         <td className="px-8 py-5">$1,000+</td>
                                     </tr>
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-semibold text-white">Enterprise <span className="text-xs text-slate-500 font-normal ml-2">(750k calls)</span></td>
-                                        <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$899</td>
+                                        <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$1499</td>
                                         <td className="px-8 py-5">$3,200+ <span className="text-xs text-slate-500 block mt-1">(Pro + Overage)</span></td>
                                         <td className="px-8 py-5">$2,800+</td>
                                     </tr>
