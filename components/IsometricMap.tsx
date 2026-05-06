@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function GlobalRadarMap() {
     return (
-        <div className="mt-12 md:mt-20 relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl md:rounded-3xl border border-white/10 bg-[#070B14]/60 backdrop-blur-xl overflow-hidden shadow-2xl group [perspective:2000px]">
+        <div className="mt-12 md:mt-20 relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl md:rounded-3xl border border-white/10 bg-[#070B14]/60 md:backdrop-blur-xl backdrop-blur-sm overflow-hidden shadow-2xl group [perspective:2000px]">
 
             {/* Custom Animations injected directly for easy plug-and-play */}
             <style dangerouslySetInnerHTML={{

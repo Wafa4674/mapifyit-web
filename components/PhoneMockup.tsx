@@ -43,7 +43,7 @@ const PhoneMockup = () => {
       {/* Phone Frame */}
       <div className="relative">
         {/* Outer glow */}
-        <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-b from-primary/8 to-transparent blur-2xl" />
+        <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-b from-primary/8 to-transparent md:blur-2xl blur-md" />
 
         <div
           className="relative w-[320px] h-[660px] rounded-[3rem] p-[3px] phone-shadow"
