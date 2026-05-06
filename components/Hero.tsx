@@ -5,12 +5,12 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Lazy load heavy visual components
-const IsometricMap = dynamic(() => import('./IsometricMap'), { 
+const IsometricMap = dynamic(() => import('./IsometricMap'), {
   ssr: false,
   loading: () => <div className="mt-12 h-[300px] w-full animate-pulse rounded-2xl bg-slate-800/50" />
 });
 
-const PhoneMockup = dynamic(() => import('./PhoneMockup'), { 
+const PhoneMockup = dynamic(() => import('./PhoneMockup'), {
   ssr: false,
   loading: () => <div className="h-[600px] w-[300px] animate-pulse rounded-[3rem] bg-slate-800/50 mx-auto" />
 });
@@ -61,7 +61,7 @@ export default function Hero() {
         <div className="relative group w-full">
           <div className="w-full">
             <div className="relative z-10 w-full transition-all duration-500">
-              <PhoneMockup />
+              {/* <PhoneMockup /> */}
             </div>
 
             {/* Background Decorative Glow */}
@@ -76,7 +76,7 @@ export default function Hero() {
           <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>
         </div>
         <div className="max-w-6xl mx-auto">
-          <IsometricMap />
+          {/* <IsometricMap /> */}
         </div>
       </div>
     </section>
