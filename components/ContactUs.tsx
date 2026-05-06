@@ -1,28 +1,80 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from "lucide-react";
-import { useMapContext } from "@/context/MapContext";
+
+// ─── Mapifyit Config ────────────────────────────────────────────────────────
+const MAPIFYIT_STYLE_URL = "https://client.mapifyit.com/api/v1/proxy/tiles/dark";
+const MAPIFYIT_TOKEN = "mfy_8b0755c081c9204caa20681ddab91d2856c3667a6ad8d9e8";
+const DUBAI_LNG = -95.535589;
+const DUBAI_LAT = 29.683243;
 
 export default function ContactUs({ standalone = false }: { standalone?: boolean }) {
-    // Slot = the div ContactUs owns; we move the global map node into it on mount
     const slotRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
     const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-    const { mapReady, attachMapTo, detachMap } = useMapContext();
+    const [mapLoaded, setMapLoaded] = useState(false);
+    const mapInstance = useRef<any>(null);
 
     useEffect(() => {
-        if (!slotRef.current) return;
-        // If the map is already rendered in the offscreen parking div,
-        // this just moves that DOM node here — instant, no re-init.
-        attachMapTo(slotRef.current);
+        // Only run on client side and if the container exists
+        if (typeof window === "undefined" || !slotRef.current) return;
+
+        let isMounted = true;
+
+        const loadMap = async () => {
+            try {
+                const maplibregl = (await import("maplibre-gl")).default;
+                
+                if (!isMounted || !slotRef.current || mapInstance.current) return;
+
+                const map = new maplibregl.Map({
+                    container: slotRef.current,
+                    style: MAPIFYIT_STYLE_URL,
+                    center: [DUBAI_LNG, DUBAI_LAT],
+                    zoom: 14,
+                    pitch: 45,
+                    attributionControl: false,
+                    transformRequest: (url: string) => {
+                        if (url.includes("mapifyit.com") || url.includes("localhost")) {
+                            return {
+                                url,
+                                headers: { Authorization: `Bearer ${MAPIFYIT_TOKEN}` },
+                            };
+                        }
+                        return { url };
+                    },
+                });
+
+                map.once("styledata", () => {
+                    if (isMounted) setMapLoaded(true);
+                });
+
+                map.once("load", () => {
+                    if (!isMounted) return;
+                    new maplibregl.Marker({ color: "#22D3EE" })
+                        .setLngLat([DUBAI_LNG, DUBAI_LAT])
+                        .addTo(map);
+                    
+                    // Force a resize to ensure Safari fits the map correctly
+                    map.resize();
+                });
+
+                mapInstance.current = map;
+            } catch (err) {
+                console.error("Map load error:", err);
+            }
+        };
+
+        loadMap();
 
         return () => {
-            // On unmount, return map to the offscreen parking div so it
-            // stays alive and ready for the next visit.
-            detachMap();
+            isMounted = false;
+            if (mapInstance.current) {
+                mapInstance.current.remove();
+                mapInstance.current = null;
+            }
         };
-    }, [attachMapTo, detachMap]);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -83,16 +135,11 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
 
                         {/* Map Viewport */}
                         <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-blue-900/30 shadow-2xl">
-                            {/*
-                             * slotRef: the global pre-rendered map node is moved into here on mount.
-                             * If mapReady is still false (very fast navigation), the shimmer shows.
-                             */}
-                            {/* z-0 keeps the map canvas below the shimmer layer */}
                             <div ref={slotRef} className="absolute inset-0 w-full h-full z-0" />
 
-                            {/* Shimmer skeleton – z-10 guarantees it's always above MapLibre's canvas */}
+                            {/* Shimmer skeleton */}
                             <div
-                                className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${mapReady ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+                                className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${mapLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}
                                 aria-hidden="true"
                             >
                                 <div className="absolute inset-0 bg-[#060D1A]" />
@@ -119,7 +166,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                 </div>
                             </div>
 
-                            {/* Location badge – z-20 so it's above the shimmer (z-10) */}
+                            {/* Location badge */}
                             <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md border border-white/5 rounded-xl flex items-center gap-3 z-20">
                                 <div className="p-2 bg-cyan-500/20 rounded-lg">
                                     <MapPin className="w-4 h-4 text-cyan-400" />
@@ -152,7 +199,6 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 pt-1">
-
                                 <div className="flex items-start gap-4 group">
                                     <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 shrink-0">
                                         <MapPin className="w-5 h-5" />
