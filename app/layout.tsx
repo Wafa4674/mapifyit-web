@@ -85,7 +85,7 @@ export const metadata: Metadata = {
       "msvalidate.01": "03109F26A544DA03DF743844C7E17EAE", // Bing Webmaster Tools verification
     },
   },
-  // manifest: "/manifest.json",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
