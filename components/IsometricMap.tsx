@@ -40,7 +40,7 @@ export default function GlobalRadarMap() {
                             fill
                             sizes="(max-width: 768px) 100vw, 1200px"
                             className="object-cover pointer-events-none"
-                            priority={false}
+                            priority={true}
                             style={{ filter: 'drop-shadow(0px 0px 15px rgba(59,130,246,0.3))' }}
                         />
                     </div>
