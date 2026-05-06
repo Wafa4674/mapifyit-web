@@ -69,14 +69,14 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
-      // {
-      //   // Cache the manifest file for PWA performance
-      //   source: "/manifest.webmanifest",
-      //   headers: [
-      //     { key: "Cache-Control", value: "public, max-age=604800, immutable" },
-      //     { key: "X-Content-Type-Options", value: "nosniff" },
-      //   ],
-      // },
+      {
+        // Cache the manifest file for PWA performance
+        source: "/manifest.json",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=604800, immutable" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
       {
         // Cache other static files in public if accessed directly
         source: "/:path*(.png|.jpg|.jpeg|.gif|.webp|.svg|.ico|.js|.css|.woff|.woff2)",
