@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       { url: "/fullwhitebackground logo.png", sizes: "32x32", type: "image/png" },
       { url: "/fullwhitebackground logo.png", sizes: "192x192", type: "image/png" },
     ],
-    apple: "/fullwhitebackground logo.png",
+    // apple: "/fullwhitebackground logo.png",
   },
   robots: {
     index: true,

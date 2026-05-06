@@ -61,7 +61,7 @@ export default function Hero() {
         <div className="relative group w-full">
           <div className="w-full">
             <div className="relative z-10 w-full transition-all duration-500">
-              {/* <PhoneMockup /> */}
+              <PhoneMockup />
             </div>
 
             {/* Background Decorative Glow */}
@@ -76,7 +76,7 @@ export default function Hero() {
           <h2 className="text-[10px] md:text-sm font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Enterprise Spatial Engine Status</h2>
         </div>
         <div className="max-w-6xl mx-auto">
-          {/* <IsometricMap /> */}
+          <IsometricMap />
         </div>
       </div>
     </section>
