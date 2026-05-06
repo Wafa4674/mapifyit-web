@@ -15,7 +15,7 @@ export default function Home() {
     <div className="relative z-10 pt-25 pb-20">
 
       {/* GLOBAL ANIMATION KEYFRAMES - Kept for component-specific animations */}
-      <style>{`
+      {/* <style>{`
         @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
         @keyframes ping-slow { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(2.5); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -33,15 +33,15 @@ export default function Home() {
         .animate-stagger-3 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; opacity: 0; }
         .animate-stagger-4 { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
         .animate-biometric-scan { animation: biometricScan 3s ease-in-out infinite; }
-      `}</style>
+      `}</style> */}
 
       {/* AMBIENT BACKGROUND GLOWS */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue-600/10 blur-[150px]" />
         <div className="absolute top-[40%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-600/5 blur-[120px]" />
         <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-indigo-600/10 blur-[150px]" />
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]" />
-      </div>
+      </div> */}
 
       <Hero />
 
