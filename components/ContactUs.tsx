@@ -188,7 +188,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
 
                     {/* RIGHT: The Form */}
                     <div className="relative lg:h-full">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur opacity-10" />
+                        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2.5rem] blur-sm opacity-10" />
 
                         <form
                             ref={formRef}

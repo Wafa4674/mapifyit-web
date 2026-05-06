@@ -60,7 +60,17 @@ export function MapProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         if (initStarted.current || !parkingRef.current) return;
-        initStarted.current = true;
+
+        // On mobile Safari, delay initialization until the main thread is idle
+        // to prevent blocking the initial page load and animations.
+        const isMobile = window.innerWidth < 768;
+        const delay = isMobile ? 2000 : 0; // 2s delay on mobile
+
+        const timeout = setTimeout(() => {
+            if (initStarted.current) return;
+            initStarted.current = true;
+            initMap().catch((e) => console.error("[MapProvider] init failed:", e));
+        }, delay);
 
         let isMounted = true;
 
@@ -133,6 +143,7 @@ export function MapProvider({ children }: { children: React.ReactNode }) {
 
         return () => {
             isMounted = false;
+            clearTimeout(timeout);
         };
     }, []);
 

@@ -96,11 +96,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* DNS + TLS preconnect for Mapifyit API origins */}
-        <link rel="preconnect" href="https://dev-client.mapifyit.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://dev-client.mapifyit.com" />
-        <link rel="dns-prefetch" href="https://tiles.mapifyit.com" />
+        {/* DNS + TLS preconnect for Mapifyit API origins - Crucial for Safari performance */}
+        <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
+        {/* <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" /> */}
+        {/* <link rel="dns-prefetch" href="https://client.mapifyit.com" /> */}
+        {/* <link rel="dns-prefetch" href="https://tiles.mapifyit.com" /> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-500/30 overflow-x-hidden`}
