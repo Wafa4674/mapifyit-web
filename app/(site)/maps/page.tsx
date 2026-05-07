@@ -430,7 +430,7 @@ export default function MapsPage() {
                     <Reveal>
 
                         <h1 className="text-3xl md:text-[45px] font-bold text-white mb-5">
-                            Mapping & Geospatial APIs
+                            Interactive Map API Platoform for Developers USA
                         </h1>
 
                         <h3 className="text-xl text-gray-400 max-w-4xl">

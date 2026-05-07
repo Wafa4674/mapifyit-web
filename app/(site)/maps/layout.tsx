@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Maps API:Vector & Satellite Tile Rendering",
+    title: "Map API for Developers USA | Google Maps Alternative",
     description:
-        "Mapifyit Maps API renders high-resolution vector and satellite tiles at 60fps. Built for mass-scale web and mobile applications with localized address accuracy across regions.",
+        "Affordable map API for developers in USA with geocoding, routing, vector maps, map tiles, & self-hosted enterprise mapping tools.",
     keywords: [
-        "maps API",
-        "vector tile rendering",
-        "satellite tiles",
-        "web mapping API",
-        "mobile maps SDK",
-        "geospatial API",
-        "localized maps",
-        "enterprise mapping API",
-        "60fps tile rendering",
-        "custom map styles",
+        "Map API for developers USA",
+        "custom map builder usa",
+        "interactive map platform usa",
+        "replace google maps api usa",
+        "mapbox pricing alternative usa",
+        "Cheaper Map Api usa",
+        "Best mapping api for developers usa",
+        "vector map API usa",
+        "location data API usa",
+        "real-time mapping API usa",
+        "Distance API USA",
+        "private mapping platform usa",
+        "self-hosted mapping platform usa",
+        "enterprise mapping platform usa",
+        "unlimited map Api usa",
+        "unlimited geocoding API usa",
+        "unlimited map API usa"
     ],
     openGraph: {
         title: "Maps API | Mapifyit",
