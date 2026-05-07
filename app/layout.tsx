@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: [
       {
-        url: "/fullwhite-background.png",
+        url: "/fullwhitebackground logo.png",
         width: 1200,
         height: 630,
         alt: "Mapifyit – Enterprise Location Intelligence",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/fullwhite-background.png", sizes: "16x16", type: "image/png" },
-      { url: "/fullwhite-background.png", sizes: "32x32", type: "image/png" },
-      { url: "/fullwhite-background.png", sizes: "192x192", type: "image/png" },
+      { url: "/fullwhitebackground logo.png", sizes: "16x16", type: "image/png" },
+      { url: "/fullwhitebackground logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/fullwhitebackground logo.png", sizes: "192x192", type: "image/png" },
     ],
     // apple: "/fullwhitebackground logo.png",
   },
