@@ -205,7 +205,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
-                                            USA Headquarter
+                                            Headquarter
                                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
