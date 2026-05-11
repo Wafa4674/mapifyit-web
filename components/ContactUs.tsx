@@ -24,7 +24,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
         const loadMap = async () => {
             try {
                 const maplibregl = (await import("maplibre-gl")).default;
-                
+
                 if (!isMounted || !slotRef.current || mapInstance.current) return;
 
                 const map = new maplibregl.Map({
@@ -54,7 +54,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                     new maplibregl.Marker({ color: "#22D3EE" })
                         .setLngLat([DUBAI_LNG, DUBAI_LAT])
                         .addTo(map);
-                    
+
                     // Force a resize to ensure Safari fits the map correctly
                     map.resize();
                 });
@@ -205,7 +205,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div className="pt-0.5">
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">
-                                            USA HQ
+                                            USA Headquarter
                                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
                                         </p>
                                         <p className="text-sm text-slate-400 leading-[1.7] font-medium group-hover:text-slate-200 transition-colors">
