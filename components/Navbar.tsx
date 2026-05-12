@@ -150,6 +150,15 @@ export default function Navbar() {
                     <p className="text-[10px] text-slate-400">Field Force Tracking</p>
                   </div>
                 </Link>
+                <Link href="https://famsentry.com/" target="_blank" rel="noopener noreferrer" onClick={() => setSolutionsOpen(false)} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all group/item">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-500 group-hover/item:text-white">
+                    <Map size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">Famsentry</p>
+                    {/* <p className="text-[10px] text-slate-400">Identity Verification</p> */}
+                  </div>
+                </Link>
               </div>
             </div>
 
