@@ -54,6 +54,19 @@ const solutions = [
             "Automated Geo-Fence Attendance Verification",
             "Mobile Team Task Dispatch & Optimized Routing for Field Operations"
         ]
+    },
+    {
+        title: "Security & Compliance – US Standard GIS Infrastructure",
+        subtitle: "Enterprise-Grade Security & Compliance",
+        description: "Mapifyit meets the rigorous security standards required for sensitive utility, telecom, and government projects. We maintain compliance with SOC 2, ISO 27001, and NIST frameworks, ensuring your geospatial data is protected by the highest industry standards.",
+        icon: ShieldCheck,
+        href: "/compliance",
+        color: "emerald",
+        infoPoints: [
+            "SOC 2 Type II & ISO 27001 Certified Infrastructure",
+            "US-Based Data Residency with NERC CIP Compliance",
+            "Full CCPA & GDPR Data Privacy Alignment"
+        ]
     }
 ];
 

@@ -213,6 +213,8 @@ export default function Footer() {
                         {[
                             { name: "Privacy Policy", href: "/privacy-policy" },
                             { name: "Terms of Service", href: "/terms-of-service" },
+                            { name: "Compliance", href: "/compliance" },
+                            { name: "DPA", href: "/data-processing-agreement" },
                             { name: "FAQs", href: "/faqs" },
                         ].map((item) => (
                             <Link key={item.name} href={item.href} className="text-slate-500 hover:text-slate-300 text-xs transition-colors">{item.name}</Link>

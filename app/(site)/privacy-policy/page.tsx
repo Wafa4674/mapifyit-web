@@ -13,6 +13,9 @@ export default function PrivacyPolicyPage() {
         { id: "data-sharing", label: "Data sharing" },
         { id: "data-retention", label: "Data retention" },
         { id: "data-rights", label: "Data rights" },
+        { id: "ccpa", label: "CCPA (California)" },
+        { id: "gdpr", label: "GDPR (Europe)" },
+        { id: "data-residency", label: "Data residency" },
     ];
 
     return (
@@ -156,6 +159,45 @@ export default function PrivacyPolicyPage() {
                                 </div>
                                 <div className="text-slate-400 leading-relaxed pl-11">
                                     <p>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you. You can also request that we erase any personal data we hold about you. This does not include data we are legally obliged to keep.</p>
+                                </div>
+                            </section>
+
+                            <section id="ccpa" className="scroll-mt-32">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-amber-400">
+                                        <Shield className="w-4 h-4" />
+                                    </div>
+                                    <h2 className="text-2xl font-semibold text-white">California Privacy (CCPA)</h2>
+                                </div>
+                                <div className="text-slate-400 leading-relaxed space-y-4 pl-11">
+                                    <p>If you are a California resident, you have the right to request access to the personal information we collect, request deletion of your information, and opt-out of the sale of your personal information.</p>
+                                    <p>Mapifyit does not sell your personal information to third parties. For any CCPA-related inquiries, please contact us at <a href="mailto:hi@mapifyit.com" className="text-blue-400">privacy@mapifyit.com</a>.</p>
+                                </div>
+                            </section>
+
+                            <section id="gdpr" className="scroll-mt-32">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-indigo-400">
+                                        <Globe className="w-4 h-4" />
+                                    </div>
+                                    <h2 className="text-2xl font-semibold text-white">European Privacy (GDPR)</h2>
+                                </div>
+                                <div className="text-slate-400 leading-relaxed space-y-4 pl-11">
+                                    <p>For users in the European Economic Area (EEA), we process your personal data in accordance with the General Data Protection Regulation (GDPR). Our legal basis for processing includes your consent, the performance of a contract, and our legitimate business interests.</p>
+                                    <p>You have the right to access, correct, or delete your personal data, as well as the right to data portability and restriction of processing.</p>
+                                </div>
+                            </section>
+
+                            <section id="data-residency" className="scroll-mt-32">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-blue-400">
+                                        <Server className="w-4 h-4" />
+                                    </div>
+                                    <h2 className="text-2xl font-semibold text-white">Data Residency & Hosting</h2>
+                                </div>
+                                <div className="text-slate-400 leading-relaxed space-y-4 pl-11">
+                                    <p>Mapifyit utilizes US-based servers for data storage and processing. We primarily use SOC 2 Type II certified data centers located within the United States to ensure the highest levels of security and compliance.</p>
+                                    <p>Client data is stored in isolated environments, and we offer dedicated residency options for enterprise clients requiring specific geographic constraints.</p>
                                 </div>
                             </section>
 

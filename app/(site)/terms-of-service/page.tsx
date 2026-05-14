@@ -23,6 +23,8 @@ export default function TermsOfServicePage() {
     { id: "deployment", label: "Deployment Models" },
     { id: "pricing", label: "Pricing & Billing" },
     { id: "intellectual-property", label: "Intellectual Property" },
+    { id: "licensing-third-party", label: "Third-Party Licensing" },
+    { id: "export-control", label: "ITAR & Export Control" },
     { id: "liability", label: "Limitation of Liability" },
   ];
 
@@ -207,6 +209,40 @@ export default function TermsOfServicePage() {
                     intellectual property of Mapifyit or its licensors. Both parties agree to
                     protect confidential information exchanged during the course of using the
                     Services.
+                  </p>
+                </div>
+              </section>
+
+              <section id="licensing-third-party" className="scroll-mt-32">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-blue-400">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-white">Third-Party Licensing</h2>
+                </div>
+                <div className="text-slate-400 leading-relaxed pl-11 space-y-4">
+                  <p>
+                    Mapifyit utilizes various third-party software components and datasets. We ensure that all third-party integrations, including GIS platforms and mapping libraries (such as Esri ArcGIS, Mapbox, or open-source tools like QGIS and Pelias), are properly licensed under commercial or open-source terms.
+                  </p>
+                  <p>
+                    Users are responsible for complying with the respective licenses of any third-party data or software they integrate into their applications via Mapifyit.
+                  </p>
+                </div>
+              </section>
+
+              <section id="export-control" className="scroll-mt-32">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-red-400">
+                    <Scale className="w-4 h-4" />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-white">ITAR & Export Control</h2>
+                </div>
+                <div className="text-slate-400 leading-relaxed pl-11 space-y-4">
+                  <p>
+                    Certain geospatial data and mapping services may be subject to US export control laws, including the International Traffic in Arms Regulations (ITAR) and the Export Administration Regulations (EAR).
+                  </p>
+                  <p>
+                    Mapifyit complies with all applicable export control regulations. Customers mapping critical defense or national security infrastructure are responsible for ensuring their use of our platform adheres to these legal requirements. We offer specialized, isolated environments for ITAR-regulated data upon request.
                   </p>
                 </div>
               </section>
