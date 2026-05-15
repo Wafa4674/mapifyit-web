@@ -73,8 +73,8 @@ export default function TermsOfServicePage() {
 
             <div className="text-lg text-slate-400 mb-12 leading-relaxed bg-white/[0.02] border border-white/5 p-6 rounded-xl">
               <p>
-                Welcome to Mapifyit ("Mapifyit", "we", "our", or "us"). These Terms &
-                Conditions ("Terms") govern your access to and use of the Mapifyit website,
+                Welcome to Mapifyit. These Terms &
+                Conditions govern your access to and use of the Mapifyit website,
                 APIs, SDKs, software, platforms, data services, and related offerings
                 (collectively, the "Services").
               </p>
