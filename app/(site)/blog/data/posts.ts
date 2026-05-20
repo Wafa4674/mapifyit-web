@@ -23,6 +23,18 @@ export const blogPosts: BlogPost[] = [
     tags: ["GIS", "Mapping", "Enterprise", "Google Maps Alternative", "Mapbox Alternative"],
     metaDescription: "MapifyIt is a full-stack mapping and GIS platform — the complete enterprise alternative to Google Maps, Mapbox, and Esri.",
     ogTitle: "MapifyIt Maps & GIS: The Complete Enterprise Alternative to Google Maps & Mapbox",
+  },
+  {
+    slug: "global-routing-benchmark-mapifyit-vs-google-maps-2026",
+    title: "Mapifyit Routing Performance Benchmark Against Google Maps",
+    excerpt: "Mapifyit car routing delivers premium-grade accuracy across all five tested regions, with 17 of 19 routes within ±10% of Google Maps on distance.",
+    category: "Performance Benchmark",
+    date: "May 20, 2026",
+    readTime: "8 min read",
+    featured: false,
+    tags: ["Routing", "Benchmark", "Performance", "Google Maps Alternative", "MapifyIt"],
+    metaDescription: "Mapifyit vs Google Maps multi-region performance analysis for car routing. See how Mapifyit provides premium-grade accuracy and speed.",
+    ogTitle: "Mapifyit Routing Performance Benchmark Against Google Maps",
   }
 ];
 

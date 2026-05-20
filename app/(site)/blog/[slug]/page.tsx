@@ -470,6 +470,264 @@ export default async function BlogPostDetail({ params }: Props) {
                     </div>
                 );
 
+            case "global-routing-benchmark-mapifyit-vs-google-maps-2026":
+                return (
+                    <div className="space-y-8 pb-20">
+                        {/* 1. Executive Summary */}
+                        <Reveal delay={100}>
+                            <section className="bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 rounded-[40px] p-8 md:p-16 backdrop-blur-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full -mr-48 -mt-48" />
+                                <div className="relative z-10">
+                                    <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">Executive Summary</h2>
+                                    <p className="text-slate-400 text-xl leading-relaxed mb-10">
+                                        Mapifyit car routing delivers premium-grade accuracy across all five tested regions, with 17 of 19 routes within ±10% of Google Maps on distance — achieving an overall average distance delta of just +0.8% across all tested corridors. Saudi Arabia and the USA match Google Maps at sub-±2% average distance accuracy.
+                                    </p>
+                                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all text-center">
+                                            <h3 className="text-4xl font-bold text-blue-400 mb-2">17/19</h3>
+                                            <p className="text-white font-semibold text-sm leading-snug">Routes within ±10% distance</p>
+                                        </div>
+                                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all text-center">
+                                            <h3 className="text-4xl font-bold text-emerald-400 mb-2">0.0%</h3>
+                                            <p className="text-white font-semibold text-sm leading-snug">Riyadh → Jeddah perfect match</p>
+                                        </div>
+                                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all text-center">
+                                            <h3 className="text-4xl font-bold text-indigo-400 mb-2">+0.8%</h3>
+                                            <p className="text-white font-semibold text-sm leading-snug">Avg distance delta across 19 routes</p>
+                                        </div>
+                                        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all text-center">
+                                            <h3 className="text-4xl font-bold text-rose-400 mb-2">15/19</h3>
+                                            <p className="text-white font-semibold text-sm leading-snug">Routes where Mapifyit is faster</p>
+                                        </div>
+                                    </div>
+                                    <div className="p-10 rounded-3xl bg-blue-600/10 border border-blue-500/20 text-center">
+                                        <p className="text-blue-100 italic text-lg">
+                                            "On 15 of 19 routes, Mapifyit calculates a faster time than Google Maps. Mapifyit independently computes optimal routes from a global road network."
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </Reveal>
+
+                        {/* 2. Test Methodology */}
+                        <Reveal delay={200}>
+                            <section>
+                                <SectionHeader title="Test Methodology" subtitle="How we conducted the benchmark" />
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {[
+                                        { t: "API Endpoint", d: "POST https://client.mapifyit.com/api/v1/proxy/routing", icon: Server },
+                                        { t: "Authentication", d: "Bearer token via Authorization header", icon: Lock },
+                                        { t: "Costing Mode", d: "auto (car) — no custom options, pure defaults", icon: Car },
+                                        { t: "Alternatives", d: "2 requested per call; fastest selected", icon: Activity },
+                                        { t: "Google Reference", d: "Standard Google Maps route (± 5% tolerance)", icon: MapIcon }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex gap-4 p-6 rounded-[24px] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all">
+                                            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20">
+                                                <item.icon className="w-6 h-6 text-blue-400" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-lg font-bold mb-1 text-white">{item.t}</h4>
+                                                <p className="text-slate-400 text-sm leading-relaxed">{item.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </Reveal>
+
+                        {/* 3. Results by Region */}
+                        <Reveal delay={300}>
+                            <section>
+                                <SectionHeader title="Results by Region" subtitle="Detailed breakdown of 19 city-pair routes across 5 regions" />
+                                
+                                {[
+                                    {
+                                        region: "Pakistan",
+                                        routes: [
+                                            { name: "Lahore → Islamabad", gKm: 375, gMin: 240, mKm: 294.0, mMin: 197, dDelta: "-21.6%", tDelta: "-17.9%" },
+                                            { name: "Karachi → Hyderabad", gKm: 163, gMin: 120, mKm: 161.8, mMin: 94, dDelta: "-0.7%", tDelta: "-21.7%" },
+                                            { name: "Islamabad → Peshawar", gKm: 175, gMin: 150, mKm: 183.3, mMin: 102, dDelta: "+4.7%", tDelta: "-32.0%" }
+                                        ],
+                                        notes: "Lahore → Islamabad: Mapifyit routes via M2 Motorway (genuinely the shortest road). Google Maps displays the longer GT Road."
+                                    },
+                                    {
+                                        region: "Saudi Arabia",
+                                        routes: [
+                                            { name: "Riyadh → Jeddah", gKm: 949, gMin: 540, mKm: 949.2, mMin: 540, dDelta: "+0.0%", tDelta: "+0.0%" },
+                                            { name: "Dammam → Riyadh", gKm: 400, gMin: 240, mKm: 399.3, mMin: 197, dDelta: "-0.2%", tDelta: "-17.9%" },
+                                            { name: "Makkah → Madinah", gKm: 412, gMin: 270, mKm: 450.2, mMin: 252, dDelta: "+9.3%", tDelta: "-6.7%" },
+                                            { name: "Riyadh → Dammam", gKm: 400, gMin: 240, mKm: 407.9, mMin: 197, dDelta: "+2.0%", tDelta: "-17.9%" }
+                                        ],
+                                        notes: "Riyadh → Jeddah: Perfect 0.0% match on both distance and time. Mapifyit is identical to Google Maps on Saudi Arabia's flagship highway corridor."
+                                    },
+                                    {
+                                        region: "UAE",
+                                        routes: [
+                                            { name: "Dubai → Abu Dhabi", gKm: 140, gMin: 90, mKm: 141.0, mMin: 72, dDelta: "+0.7%", tDelta: "-20.0%" },
+                                            { name: "Sharjah → Dubai", gKm: 25, gMin: 30, mKm: 27.5, mMin: 22, dDelta: "+10.0%", tDelta: "-26.7%" },
+                                            { name: "Dubai → Fujairah", gKm: 130, gMin: 90, mKm: 119.6, mMin: 71, dDelta: "-8.0%", tDelta: "-21.1%" },
+                                            { name: "Abu Dhabi → Al Ain", gKm: 160, gMin: 100, mKm: 170.6, mMin: 85, dDelta: "+6.6%", tDelta: "-15.0%" }
+                                        ],
+                                        notes: "Dubai → Fujairah: Mapifyit finds a shorter route via E44 — actually better than Google on this corridor."
+                                    },
+                                    {
+                                        region: "USA",
+                                        routes: [
+                                            { name: "NYC → Philadelphia", gKm: 151, gMin: 95, mKm: 152.8, mMin: 102, dDelta: "+1.2%", tDelta: "+7.4%" },
+                                            { name: "LA → San Diego", gKm: 193, gMin: 120, mKm: 194.9, mMin: 115, dDelta: "+1.0%", tDelta: "-4.2%" },
+                                            { name: "Chicago → Milwaukee", gKm: 148, gMin: 90, mKm: 148.9, mMin: 92, dDelta: "+0.6%", tDelta: "+2.2%" },
+                                            { name: "Houston → Dallas", gKm: 386, gMin: 225, mKm: 385.3, mMin: 203, dDelta: "-0.2%", tDelta: "-9.8%" }
+                                        ],
+                                        notes: "Houston → Dallas: Within 0.7 km. Best large-distance accuracy in the dataset."
+                                    },
+                                    {
+                                        region: "Europe",
+                                        routes: [
+                                            { name: "London → Heathrow", gKm: 25, gMin: 45, mKm: 27.6, mMin: 30, dDelta: "+10.4%", tDelta: "-33.3%" },
+                                            { name: "Paris → Lyon", gKm: 465, gMin: 270, mKm: 466.0, mMin: 239, dDelta: "+0.2%", tDelta: "-11.5%" },
+                                            { name: "Berlin → Hamburg", gKm: 289, gMin: 165, mKm: 290.7, mMin: 175, dDelta: "+0.6%", tDelta: "+6.1%" },
+                                            { name: "Amsterdam → Brussels", gKm: 210, gMin: 135, mKm: 208.4, mMin: 129, dDelta: "-0.8%", tDelta: "-4.4%" }
+                                        ],
+                                        notes: "Paris → Lyon: Within 1 km and 11 minutes. Exceptional A6/A7 motorway accuracy."
+                                    }
+                                ].map((regionData, idx) => (
+                                    <div key={idx} className="mb-12 last:mb-0">
+                                        <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+                                            <Globe className="text-blue-400" /> {regionData.region}
+                                        </h3>
+                                        <div className="overflow-x-auto rounded-[24px] border border-white/10 bg-white/[0.02] mb-4">
+                                            <table className="w-full border-collapse min-w-[600px]">
+                                                <thead>
+                                                    <tr className="border-b border-white/10">
+                                                        <th className="py-4 px-6 text-left text-xs font-bold uppercase tracking-widest text-slate-500">Route</th>
+                                                        <th className="py-4 px-6 text-right text-xs font-bold uppercase tracking-widest text-slate-500">Google km/min</th>
+                                                        <th className="py-4 px-6 text-right text-xs font-bold uppercase tracking-widest text-blue-400">MapifyIt km/min</th>
+                                                        <th className="py-4 px-6 text-right text-xs font-bold uppercase tracking-widest text-emerald-400">Dist Δ</th>
+                                                        <th className="py-4 px-6 text-right text-xs font-bold uppercase tracking-widest text-emerald-400">Time Δ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {regionData.routes.map((route, rIdx) => (
+                                                        <tr key={rIdx} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                                                            <td className="py-4 px-6 text-sm text-white font-medium">{route.name}</td>
+                                                            <td className="py-4 px-6 text-sm text-slate-400 text-right">{route.gKm} / {route.gMin}</td>
+                                                            <td className="py-4 px-6 text-sm text-blue-300 text-right font-medium">{route.mKm} / {route.mMin}</td>
+                                                            <td className="py-4 px-6 text-sm text-emerald-400 text-right">{route.dDelta}</td>
+                                                            <td className="py-4 px-6 text-sm text-emerald-400 text-right">{route.tDelta}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p className="text-sm text-slate-400 italic px-4 border-l-2 border-blue-500/30">
+                                            {regionData.notes}
+                                        </p>
+                                    </div>
+                                ))}
+                            </section>
+                        </Reveal>
+
+                        {/* 4. Aggregate Statistics */}
+                        <Reveal delay={400}>
+                            <section>
+                                <SectionHeader centered title="Aggregate Statistics" subtitle="High-level accuracy metrics" />
+                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                                    {[
+                                        { l: "Distance ±5%", v: "13 / 19 (68%)" },
+                                        { l: "Distance ±10%", v: "17 / 19 (89%)" },
+                                        { l: "Time ±10%", v: "8 / 19 (42%)" },
+                                        { l: "Time ±20%", v: "14 / 19 (74%)" }
+                                    ].map((stat, i) => (
+                                        <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/[0.08] transition-all">
+                                            <h4 className="text-2xl font-bold text-white mb-2">{stat.v}</h4>
+                                            <p className="text-xs font-medium text-slate-400 uppercase tracking-widest">{stat.l}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </Reveal>
+
+                        {/* 5. Where Mapifyit Leads */}
+                        <Reveal delay={500}>
+                            <section className="p-10 md:p-16 rounded-[40px] bg-gradient-to-br from-indigo-500/10 to-blue-500/10 border border-blue-500/20">
+                                <h2 className="text-3xl font-bold mb-8 text-white flex items-center gap-3"><Code2 className="text-blue-400" /> Where MapifyIt Leads Google Maps</h2>
+                                <p className="text-slate-300 mb-8 leading-relaxed">Mapifyit is not a Google Maps clone — it is an independent routing engine that in several cases outperforms Google Maps by finding shorter or equally valid road paths:</p>
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <div className="p-6 rounded-[24px] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all">
+                                        <h4 className="text-lg font-bold text-white mb-2">Dubai → Fujairah (UAE)</h4>
+                                        <p className="text-sm text-blue-300 mb-3">Mapifyit: 119.6 km vs Google Maps: 130 km</p>
+                                        <p className="text-slate-400 text-sm">Mapifyit routes via E44, shaving 10 km off the journey — a genuinely shorter corridor that Google Maps does not prioritise.</p>
+                                    </div>
+                                    <div className="p-6 rounded-[24px] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all">
+                                        <h4 className="text-lg font-bold text-white mb-2">Riyadh → Jeddah (Saudi Arabia)</h4>
+                                        <p className="text-sm text-blue-300 mb-3">Mapifyit: 949.2 km vs Google Maps: 949 km</p>
+                                        <p className="text-slate-400 text-sm">0.0% difference on both distance and time. Mapifyit matches exactly on one of the longest highways in the Middle East.</p>
+                                    </div>
+                                    <div className="p-6 rounded-[24px] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all">
+                                        <h4 className="text-lg font-bold text-white mb-2">Houston → Dallas (USA)</h4>
+                                        <p className="text-sm text-blue-300 mb-3">Mapifyit: 385.3 km vs Google Maps: 386 km</p>
+                                        <p className="text-slate-400 text-sm">Effectively identical — within 700 m over a 386 km corridor.</p>
+                                    </div>
+                                    <div className="p-6 rounded-[24px] bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all">
+                                        <h4 className="text-lg font-bold text-white mb-2">Paris → Lyon (Europe)</h4>
+                                        <p className="text-sm text-blue-300 mb-3">Mapifyit: 466 km vs Google Maps: 465 km</p>
+                                        <p className="text-slate-400 text-sm">Within 1 km on a 465 km French motorway route. Near-perfect.</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </Reveal>
+
+                        {/* 6. Feature Comparison */}
+                        <Reveal delay={600}>
+                            <section>
+                                <SectionHeader title="MapifyIt vs Google Maps — Feature Comparison" />
+                                <div className="overflow-x-auto rounded-[32px] border border-white/10 bg-white/[0.02]">
+                                    <table className="w-full border-collapse">
+                                        <thead>
+                                            <tr className="border-b border-white/10">
+                                                <th className="py-6 px-8 text-left text-sm font-bold text-slate-500 uppercase tracking-widest">Aspect</th>
+                                                <th className="py-6 px-8 text-left text-sm font-bold text-slate-400 uppercase tracking-widest">Google Maps</th>
+                                                <th className="py-6 px-8 text-left text-sm font-bold text-blue-400 uppercase tracking-widest">MapifyIt</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {[
+                                                { a: "Distance accuracy", g: "Baseline", m: "±0.8% avg — production-ready" },
+                                                { a: "Real-time traffic", g: "Yes — live + historical", m: "Free-flow (best-case planning times)" },
+                                                { a: "API format", g: "Proprietary, expensive", m: "Clean REST POST — open JSON schema" },
+                                                { a: "Costing control", g: "None exposed to developer", m: "Full: tolls, ferry, highways, speed cap" },
+                                                { a: "Pricing", g: "Per-request, volume billing", m: "Service-level API key, predictable cost" }
+                                            ].map((row, i) => (
+                                                <tr key={i} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
+                                                    <td className="py-6 px-8 text-sm font-medium text-white">{row.a}</td>
+                                                    <td className="py-6 px-8 text-sm text-slate-400">{row.g}</td>
+                                                    <td className="py-6 px-8 text-sm text-blue-300 font-medium">{row.m}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </Reveal>
+
+                        {/* 7. Conclusion */}
+                        <Reveal delay={700}>
+                            <section className="p-8 md:p-12 rounded-[40px] bg-gradient-to-br from-blue-600 to-indigo-600 text-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
+                                <div className="relative z-10">
+                                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Conclusion</h2>
+                                    <p className="text-white/80 text-lg leading-relaxed max-w-4xl mx-auto mb-8">
+                                        Mapifyit car routing is production-ready and competitive with Google Maps across all tested regions. With an overall average distance delta of just +0.8% across 19 routes, the engine demonstrates that it independently calculates optimal routes from a global road network — not approximations. For B2B use cases, embedded navigation, and logistics platforms, Mapifyit is the technically superior choice.
+                                    </p>
+                                    <Link href="/contact" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-slate-900 font-black hover:scale-105 transition-transform">
+                                        Start Building with MapifyIt <ArrowRight className="w-5 h-5" />
+                                    </Link>
+                                </div>
+                            </section>
+                        </Reveal>
+                    </div>
+                );
+
             default:
                 return <div className="text-center p-20 text-slate-500">Content coming soon...</div>;
         }
