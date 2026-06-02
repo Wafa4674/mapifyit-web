@@ -140,7 +140,7 @@ export default function Footer() {
                                     <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
                                         <Phone className="w-4 h-4 text-blue-500" />
                                     </div>
-                                    <span>+1 281 980 2206</span>
+                                    <span>+1 281 980 2206 <br /> +1 888 980 7422</span>
                                 </div>
                             </div>
                         </div>

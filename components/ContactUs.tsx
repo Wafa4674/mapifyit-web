@@ -193,7 +193,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Call Us</p>
-                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">+1 281 980 2206</p>
+                                        <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">+1 281 980 2206 <br /> +1 888 980 7422</p>
                                     </div>
                                 </a>
                             </div>
