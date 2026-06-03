@@ -136,11 +136,19 @@ export default function Footer() {
                                     </div>
                                     <span>+966 53 540 5691</span>
                                 </div> */}
-                                <div className="flex items-center gap-4 text-slate-400 hover:text-slate-200 transition-colors text-sm group">
-                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors">
+                                <div className="flex items-start gap-4 text-slate-400 transition-colors text-sm group">
+                                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-500/10 transition-colors shrink-0">
                                         <Phone className="w-4 h-4 text-blue-500" />
                                     </div>
-                                    <span>+1 281 980 2206 <br /> +1 888 980 7422</span>
+                                    <div className="flex flex-col gap-1.5">
+                                        <a href="tel:+18889807422" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                                            <span>+1 888 980 7422</span>
+                                            <span className="text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-1.5 py-0.5 rounded-full font-bold tracking-wide uppercase">Toll Free</span>
+                                        </a>
+                                        <a href="tel:+12819802206" className="hover:text-cyan-400 transition-colors">
+                                            +1 281 980 2206
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
