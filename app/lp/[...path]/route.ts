@@ -37,13 +37,15 @@ const countryLabels: Record<string, string> = {
   other: "Other",
 };
 
-const smtpConfig = {
-  host: "mail.mapifyit.com",
-  port: 587,
-  user: "noreply@system.mapifyit.com",
-  pass: "-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe",
-  from: "MapifyIt Website <noreply@system.mapifyit.com>",
-  recipient: "hassan@mapifyit.com",
+type LandingSmtpConfig = {
+  host: string;
+  port: number;
+  encryption: string;
+  user: string;
+  pass: string;
+  from: string;
+  fromName: string;
+  recipients: string[];
 };
 
 function clean(value: FormDataEntryValue | null, max = 500) {
@@ -64,6 +66,49 @@ function escapeHtml(value: string) {
 
 function jsonError(message: string, status = 400) {
   return Response.json({ ok: false, message }, { status });
+}
+
+function readPhpStringConfig(config: string, key: string) {
+  const quotedPattern = new RegExp(`['"]${key}['"]\\s*=>\\s*['"]([^'"]*)['"]`);
+  const quotedValue = config.match(quotedPattern)?.[1];
+  if (quotedValue !== undefined) {
+    return quotedValue;
+  }
+
+  const rawPattern = new RegExp(`['"]${key}['"]\\s*=>\\s*([^,\\r\\n]+)`);
+  return config.match(rawPattern)?.[1]?.trim() ?? "";
+}
+
+function readPhpArrayConfig(config: string, key: string) {
+  const arrayPattern = new RegExp(`['"]${key}['"]\\s*=>\\s*\\[([^\\]]*)\\]`, "s");
+  const arrayMatch = config.match(arrayPattern);
+
+  if (!arrayMatch) {
+    const singleValue = readPhpStringConfig(config, key);
+    return singleValue ? [singleValue] : [];
+  }
+
+  return [...arrayMatch[1].matchAll(/['"]([^'"]+)['"]/g)].map((match) => match[1]);
+}
+
+async function loadLandingSmtpConfig(): Promise<LandingSmtpConfig> {
+  const config = await readFile(path.join(lpRoot, "config.php"), "utf8");
+  const recipients = readPhpArrayConfig(config, "to_email");
+
+  if (recipients.length === 0) {
+    throw new Error("No landing page email recipients configured.");
+  }
+
+  return {
+    host: readPhpStringConfig(config, "smtp_host"),
+    port: Number(readPhpStringConfig(config, "smtp_port")) || 587,
+    encryption: readPhpStringConfig(config, "smtp_encryption"),
+    user: readPhpStringConfig(config, "smtp_username"),
+    pass: readPhpStringConfig(config, "smtp_password"),
+    from: readPhpStringConfig(config, "from_email"),
+    fromName: readPhpStringConfig(config, "from_name"),
+    recipients,
+  };
 }
 
 function rewriteHtml(html: string) {
@@ -128,11 +173,12 @@ async function handleContact(request: Request) {
   const countryLabel = countryLabels[country] ?? country;
   const sourceLabel = source === "hero" ? "Hero form" : source === "modal" ? "Popup form" : source || "website";
   const fullName = `${firstName} ${lastName}`;
+  const smtpConfig = await loadLandingSmtpConfig();
 
   const transporter = nodemailer.createTransport({
     host: smtpConfig.host,
     port: smtpConfig.port,
-    secure: false,
+    secure: smtpConfig.encryption === "ssl",
     auth: {
       user: smtpConfig.user,
       pass: smtpConfig.pass,
@@ -156,8 +202,8 @@ async function handleContact(request: Request) {
   `;
 
   await transporter.sendMail({
-    from: smtpConfig.from,
-    to: smtpConfig.recipient,
+    from: smtpConfig.fromName ? `${smtpConfig.fromName} <${smtpConfig.from}>` : smtpConfig.from,
+    to: smtpConfig.recipients,
     replyTo: email,
     subject: `MapifyIt lead: ${helpLabel} - ${company}`,
     text: [

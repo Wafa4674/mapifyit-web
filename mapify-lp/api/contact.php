@@ -145,7 +145,12 @@ try {
     }
 
     $mail->setFrom($config['from_email'], $config['from_name']);
-    $mail->addAddress($config['to_email'], $config['to_name'] ?? '');
+
+    $recipients = is_array($config['to_email']) ? $config['to_email'] : [$config['to_email']];
+    foreach ($recipients as $recipient) {
+        $mail->addAddress((string) $recipient, $config['to_name'] ?? '');
+    }
+
     $mail->addReplyTo($email, $firstName . ' ' . $lastName);
 
     $mail->isHTML(true);
