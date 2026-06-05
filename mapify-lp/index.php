@@ -79,10 +79,13 @@
                   <option value="maps-api">Maps API</option>
                   <option value="gis">GIS Platform</option>
                   <option value="routing">Routing &amp; Optimization</option>
-                  <option value="on-premise">On-Premise Deployment</option>
+                  <option value="on-premise">On-Premise Map Deployment</option>
                   <option value="fleet">Fleet Management System</option>
                   <option value="ekyc">NG eKYC / Identity Verification</option>
                   <option value="field-force">Field Force Tracking</option>
+                  <option value="mile-delivery">Mile Delivery System</option>
+                  <option value="pod">Proof of Delivery System</option>
+
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -585,5 +588,19 @@
   </div>
 
   <script src="script.js"></script>
+  <!--Start of Tawk.to Script-->
+  <script>
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script");
+      var s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/6a02baab9d8a681c3560638f/1jodaibll";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
 </body>
 </html>
