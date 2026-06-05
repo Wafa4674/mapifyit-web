@@ -3,17 +3,17 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-    Twitter,
     Linkedin,
     Facebook,
     Instagram,
-    Github,
     Mail,
     Phone,
-    MapPin,
-    ArrowRight,
-    ChevronRight
+    ChevronRight,
 } from 'lucide-react';
+
+const PinterestIcon = ({ className }: { className?: string }) => (
+    <i className={`fa-brands fa-pinterest text-[25px] font-bold pt-0.5 leading-none ${className ?? ""}`} aria-hidden="true" />
+);
 
 export default function Footer() {
     const pathname = usePathname();
@@ -30,6 +30,7 @@ export default function Footer() {
         { icon: Linkedin, href: "https://linkedin.com/company/mapifyit", label: "LinkedIn" },
         { icon: Facebook, href: "https://www.facebook.com/share/1BUY6FUDwd/?mibextid=wwXIfr", label: "Facebook" },
         { icon: Instagram, href: "https://www.instagram.com/mapifyit_?igsh=NjZ2aGN2M214Nnk=", label: "Instagram" },
+        { icon: PinterestIcon, href: "https://www.pinterest.com/mapifyit/", label: "Pinterest" },
         // { icon: Github, href: "#", label: "GitHub" },
     ];
 

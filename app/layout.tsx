@@ -98,6 +98,12 @@ export default function RootLayout({
       <head>
         {/* DNS + TLS preconnect for Mapifyit API origins - Crucial for Safari performance */}
         <link rel="preconnect" href="https://client.mapifyit.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
         {/* <link rel="preconnect" href="https://tiles.mapifyit.com" crossOrigin="anonymous" /> */}
         {/* <link rel="dns-prefetch" href="https://client.mapifyit.com" /> */}
         {/* <link rel="dns-prefetch" href="https://tiles.mapifyit.com" /> */}
