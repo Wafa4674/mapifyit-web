@@ -10,6 +10,19 @@
   <link href="//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18204112645"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18204112645');
+</script>
+<script>
+  gtag('config', 'AW-18204112645/kW64COjx2bkcEIXusuhD', {
+    'phone_conversion_number': '888-980-7422'
+  });
+</script>
 </head>
 <body class="dark-mode">
 
@@ -65,7 +78,7 @@
             <div class="hero-form-accent" aria-hidden="true"></div>
             <header class="hero-form-header">
               <span class="hero-form-badge">Free consultation</span>
-              <h3>Start your geospatial project</h3>
+              <h3>Start your maps or geospatial project</h3>
               <p>Tell us what you need — our team replies within one business day.</p>
               <span class="hero-form-divider" aria-hidden="true">
                 <span class="hero-form-divider-glow"></span>
@@ -83,7 +96,7 @@
                   <option value="fleet">Fleet Management System</option>
                   <option value="ekyc">NG eKYC / Identity Verification</option>
                   <option value="field-force">Field Force Tracking</option>
-                  <option value="mile-delivery">Mile Delivery System</option>
+                  <option value="mile-delivery">Last mile Delivery System</option>
                   <option value="pod">Proof of Delivery System</option>
 
                   <option value="other">Other</option>
@@ -162,7 +175,7 @@
           </div>
         </div>
         <div class="benefit-media bordered">
-          <img src="assets/map1.png" alt="Digital map and geospatial visualization">
+          <img src="assets/mapify-map.png" alt="Digital map and geospatial visualization">
         </div>
       </div>
 

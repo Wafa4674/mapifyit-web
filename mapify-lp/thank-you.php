@@ -10,6 +10,14 @@
   <link href="//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18204112645"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18204112645');
+</script>
 </head>
 <body class="dark-mode">
 
