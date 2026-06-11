@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Phone, Mail, MapPin, Send, User, MessageSquare, CheckCircle2 } from "lucide-react";
+import { initDevToolsGuard } from "../utils/devToolsGuard";
 
 // ─── Mapifyit Config ────────────────────────────────────────────────────────
 const MAPIFYIT_STYLE_URL = "https://client.mapifyit.com/api/v1/proxy/tiles/dark";
@@ -61,7 +62,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
 
                 mapInstance.current = map;
             } catch (err) {
-                console.error("Map load error:", err);
+                // console.error("Map load error:", err); // Suppressed
             }
         };
 
@@ -75,6 +76,12 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
             }
         };
     }, []);
+
+  // Initialize dev tools guard to suppress console and block shortcuts
+  useEffect(() => {
+    initDevToolsGuard();
+  }, []);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -104,7 +111,7 @@ export default function ContactUs({ standalone = false }: { standalone?: boolean
             setStatus("sent");
             formRef.current?.reset();
         } catch (error) {
-            console.error("Failed to send email:", error);
+            // console.error("Failed to send email:", error); // Suppressed
             setStatus("error");
             setTimeout(() => setStatus("idle"), 3000);
         }
