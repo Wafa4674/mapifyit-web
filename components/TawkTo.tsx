@@ -9,6 +9,11 @@ export default function TawkTo() {
         {`
           window.Tawk_API = window.Tawk_API || {};
           window.Tawk_LoadStart = new Date();
+
+          // Force Chat: auto-open the widget as soon as it finishes loading
+          window.Tawk_API.onLoad = function () {
+            window.Tawk_API.maximize();
+          };
         `}
       </Script>
       <Script
