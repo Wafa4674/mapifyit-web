@@ -207,7 +207,7 @@
       if (messageCount) messageCount.textContent = `0 / ${maxMsg}`;
     });
 
-    bindFormSubmit(heroForm, '.btn-submit', 'Submit request');
+    bindFormSubmit(heroForm, '.btn-submit', 'Book Free Demo');
   }
 
   // ── Contact popup modal ──
@@ -246,6 +246,14 @@
     }
   });
 
+  if (contactModal) {
+    setTimeout(() => {
+      if (!contactModal.classList.contains('is-open')) {
+        openContactModal();
+      }
+    }, 3000);
+  }
+
   const modalForm = document.getElementById('modalContactForm');
   if (modalForm) {
     const modalMessage = modalForm.querySelector('#modalMessage');
@@ -265,6 +273,6 @@
       if (modalMessageCount) modalMessageCount.textContent = `0 / ${maxMsg}`;
     });
 
-    bindFormSubmit(modalForm, '.btn-submit', 'Send message');
+    bindFormSubmit(modalForm, '.btn-submit', 'Book Free Demo');
   }
 })();

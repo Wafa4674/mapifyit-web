@@ -99,28 +99,28 @@ $helpLabel    = $helpLabels[$helpType];
 $countryLabel = $countryLabels[$country] ?? $country;
 $sourceLabel  = $source === 'hero' ? 'Hero form' : ($source === 'modal' ? 'Popup form' : $source);
 
-$subject = 'MapifyIt lead: ' . $helpLabel . ' — ' . $company;
+$subject = 'MapifyIt demo request: ' . $helpLabel . ' - ' . $company;
 
 $bodyHtml = '
-<h2>New contact request</h2>
+<h2>New demo booking request</h2>
 <p><strong>Source:</strong> ' . htmlspecialchars($sourceLabel, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Topic:</strong> ' . htmlspecialchars($helpLabel, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Name:</strong> ' . htmlspecialchars($firstName . ' ' . $lastName, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Email:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Country:</strong> ' . htmlspecialchars($countryLabel, ENT_QUOTES, 'UTF-8') . '</p>
-<p><strong>Job title:</strong> ' . htmlspecialchars($jobTitle !== '' ? $jobTitle : '—', ENT_QUOTES, 'UTF-8') . '</p>
+<p><strong>Job title:</strong> ' . htmlspecialchars($jobTitle !== '' ? $jobTitle : '-', ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Company:</strong> ' . htmlspecialchars($company, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Message:</strong></p>
 <p>' . nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8')) . '</p>
 ';
 
-$bodyText = "New contact request\n\n"
+$bodyText = "New demo booking request\n\n"
     . "Source: {$sourceLabel}\n"
     . "Topic: {$helpLabel}\n"
     . "Name: {$firstName} {$lastName}\n"
     . "Email: {$email}\n"
     . "Country: {$countryLabel}\n"
-    . "Job title: " . ($jobTitle !== '' ? $jobTitle : '—') . "\n"
+    . "Job title: " . ($jobTitle !== '' ? $jobTitle : '-') . "\n"
     . "Company: {$company}\n\n"
     . "Message:\n{$message}\n";
 
@@ -145,12 +145,7 @@ try {
     }
 
     $mail->setFrom($config['from_email'], $config['from_name']);
-
-    $recipients = is_array($config['to_email']) ? $config['to_email'] : [$config['to_email']];
-    foreach ($recipients as $recipient) {
-        $mail->addAddress((string) $recipient, $config['to_name'] ?? '');
-    }
-
+    $mail->addAddress($config['to_email'], $config['to_name'] ?? '');
     $mail->addReplyTo($email, $firstName . ' ' . $lastName);
 
     $mail->isHTML(true);
@@ -160,7 +155,7 @@ try {
 
     $mail->send();
 
-    echo json_encode(['ok' => true, 'message' => 'Thank you! We will be in touch soon.']);
+    echo json_encode(['ok' => true, 'message' => 'Thank you! We will confirm your demo soon.']);
 } catch (Exception $e) {
     error_log('MapifyIt contact mail error: ' . $e->getMessage());
     http_response_code(500);

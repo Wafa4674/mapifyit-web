@@ -48,6 +48,17 @@ type LandingSmtpConfig = {
   recipients: string[];
 };
 
+const fallbackLandingSmtpConfig: LandingSmtpConfig = {
+  host: "mail.mapifyit.com",
+  port: 587,
+  encryption: "tls",
+  user: "noreply@system.mapifyit.com",
+  pass: "-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe",
+  from: "noreply@system.mapifyit.com",
+  fromName: "MapifyIt Support",
+  recipients: ["narius@mapifyit.com", "sr@stockit.ae","hassan@mapifyit.com"],
+};
+
 function clean(value: FormDataEntryValue | null, max = 500) {
   return String(value ?? "")
     .replace(/<[^>]*>/g, "")
@@ -92,19 +103,40 @@ function readPhpArrayConfig(config: string, key: string) {
 }
 
 async function loadLandingSmtpConfig(): Promise<LandingSmtpConfig> {
-  const config = await readFile(path.join(lpRoot, "config.php"), "utf8");
+  let config = "";
+
+  try {
+    config = await readFile(path.join(lpRoot, "config.php"), "utf8");
+  } catch {
+    return fallbackLandingSmtpConfig;
+  }
+
   const recipients = readPhpArrayConfig(config, "to_email");
+  const host = readPhpStringConfig(config, "smtp_host");
+  const user = readPhpStringConfig(config, "smtp_username");
+  const pass = readPhpStringConfig(config, "smtp_password");
+
+  if (
+    host === "" ||
+    host === "smtp.example.com" ||
+    user === "" ||
+    user === "your-smtp-user@example.com" ||
+    pass === "" ||
+    pass === "your-smtp-password"
+  ) {
+    return fallbackLandingSmtpConfig;
+  }
 
   if (recipients.length === 0) {
-    throw new Error("No landing page email recipients configured.");
+    return fallbackLandingSmtpConfig;
   }
 
   return {
-    host: readPhpStringConfig(config, "smtp_host"),
+    host,
     port: Number(readPhpStringConfig(config, "smtp_port")) || 587,
     encryption: readPhpStringConfig(config, "smtp_encryption"),
-    user: readPhpStringConfig(config, "smtp_username"),
-    pass: readPhpStringConfig(config, "smtp_password"),
+    user,
+    pass,
     from: readPhpStringConfig(config, "from_email"),
     fromName: readPhpStringConfig(config, "from_name"),
     recipients,

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | MapifyIt</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="//fonts.googleapis.com">
-  <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-  <link href="//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18204112645"></script>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18204112645"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -49,9 +49,9 @@
           <path d="M17 28l8 8 14-16" stroke="#3080ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <span class="hero-form-badge">Message received</span>
-      <h1>Thank you for reaching out</h1>
-      <p class="thank-you-lead">We've received your request and our team will get back to you within <strong>one business day</strong>.</p>
+      <span class="hero-form-badge">Demo booked</span>
+      <h1>Thank you for booking a demo</h1>
+      <p class="thank-you-lead">We've received your demo request and will confirm your session within <strong>one business day</strong>.</p>
       <p class="thank-you-sub">Need help sooner? Call us toll free anytime.</p>
       <div class="thank-you-actions">
         <a href="tel:+18889807422" class="btn btn-primary" aria-label="Call 888-980-7422">888-980-7422</a>
