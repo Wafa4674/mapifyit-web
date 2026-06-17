@@ -20,20 +20,14 @@ const contentTypes: Record<string, string> = {
 const helpLabels: Record<string, string> = {
   "maps-api": "Maps API",
   gis: "GIS Platform",
+  "custom-gis": "Custom GIS Project",
   routing: "Routing & Optimization",
   "on-premise": "On-Premise Deployment",
   fleet: "Fleet Management System",
   ekyc: "NG eKYC / Identity Verification",
   "field-force": "Field Force Tracking",
-  other: "Other",
-};
-
-const countryLabels: Record<string, string> = {
-  US: "United States",
-  CA: "Canada",
-  GB: "United Kingdom",
-  IN: "India",
-  AU: "Australia",
+  "last-mile": "Last Mile Delivery System",
+  "proof-delivery": "Proof of Delivery System",
   other: "Other",
 };
 
@@ -56,7 +50,7 @@ const fallbackLandingSmtpConfig: LandingSmtpConfig = {
   pass: "-,55,sSinqUinGEnTErWaRmtElIChIOnsTICe",
   from: "noreply@system.mapifyit.com",
   fromName: "MapifyIt Support",
-  recipients: ["narius@mapifyit.com", "sr@stockit.ae","hassan@mapifyit.com"],
+  recipients: ["narius@mapifyit.com", "sr@stockit.ae","hassan@mapifyit.com"]
 };
 
 function clean(value: FormDataEntryValue | null, max = 500) {
@@ -77,6 +71,16 @@ function escapeHtml(value: string) {
 
 function jsonError(message: string, status = 400) {
   return Response.json({ ok: false, message }, { status });
+}
+
+function formValue(formData: FormData, keys: string[], max = 500) {
+  for (const key of keys) {
+    const value = clean(formData.get(key), max);
+    if (value !== "") {
+      return value;
+    }
+  }
+  return "";
 }
 
 function readPhpStringConfig(config: string, key: string) {
@@ -179,22 +183,38 @@ async function handleContact(request: Request) {
     return Response.json({ ok: true, message: "Thank you" });
   }
 
-  const helpType = clean(formData.get("helpType"), 64);
-  const firstName = clean(formData.get("firstName"), 100);
-  const lastName = clean(formData.get("lastName"), 100);
-  const email = clean(formData.get("email"), 254);
-  const country = clean(formData.get("country"), 64);
-  const jobTitle = clean(formData.get("jobTitle"), 120);
-  const company = clean(formData.get("company"), 200);
-  const message = clean(formData.get("message"), 500);
-  const source = clean(formData.get("source"), 32);
+  let helpType = formValue(formData, ["helpType", "topic", "demoTopic"], 64);
+  let fullName = formValue(formData, ["fullName", "fullname", "name", "your-name"], 200);
+  const firstName = formValue(formData, ["firstName", "first_name", "fname"], 100);
+  const lastName = formValue(formData, ["lastName", "last_name", "lname"], 100);
+  const email = formValue(formData, ["email", "emailAddress", "your-email"], 254);
+  const rawPhone = formValue(formData, ["phone", "phoneNumber", "telephone", "mobile"], 32);
+  const phone = rawPhone.replace(/\D/g, "");
+  const message = formValue(formData, ["message", "comments", "details"], 500);
+  const source = formValue(formData, ["source"], 32);
 
-  if (!helpType || !firstName || !lastName || !email || !country || !company || !message) {
-    return jsonError("Please fill in all required fields.");
+  if (fullName === "") {
+    fullName = `${firstName} ${lastName}`.trim();
+  }
+
+  if (fullName === "") {
+    fullName = "Website lead";
+  }
+
+  if (!email) {
+    return jsonError("Please enter your email address.");
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return jsonError("Please enter a valid email address.");
+  }
+
+  if (phone !== "" && !/^\d{10}$/.test(phone)) {
+    return jsonError("Please enter exactly 10 digits for phone number.");
+  }
+
+  if (helpType === "") {
+    helpType = "other";
   }
 
   if (!helpLabels[helpType]) {
@@ -202,9 +222,8 @@ async function handleContact(request: Request) {
   }
 
   const helpLabel = helpLabels[helpType];
-  const countryLabel = countryLabels[country] ?? country;
   const sourceLabel = source === "hero" ? "Hero form" : source === "modal" ? "Popup form" : source || "website";
-  const fullName = `${firstName} ${lastName}`;
+  const messageLabel = message || "-";
   const smtpConfig = await loadLandingSmtpConfig();
 
   const transporter = nodemailer.createTransport({
@@ -226,18 +245,16 @@ async function handleContact(request: Request) {
     <p><strong>Topic:</strong> ${escapeHtml(helpLabel)}</p>
     <p><strong>Name:</strong> ${escapeHtml(fullName)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Country:</strong> ${escapeHtml(countryLabel)}</p>
-    <p><strong>Job title:</strong> ${escapeHtml(jobTitle || "-")}</p>
-    <p><strong>Company:</strong> ${escapeHtml(company)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(phone || "-")}</p>
     <p><strong>Message:</strong></p>
-    <p>${escapeHtml(message).replaceAll("\n", "<br>")}</p>
+    <p>${escapeHtml(messageLabel).replaceAll("\n", "<br>")}</p>
   `;
 
   await transporter.sendMail({
     from: smtpConfig.fromName ? `${smtpConfig.fromName} <${smtpConfig.from}>` : smtpConfig.from,
     to: smtpConfig.recipients,
     replyTo: email,
-    subject: `MapifyIt lead: ${helpLabel} - ${company}`,
+    subject: `MapifyIt lead: ${helpLabel} - ${fullName}`,
     text: [
       "New contact request",
       "",
@@ -245,12 +262,10 @@ async function handleContact(request: Request) {
       `Topic: ${helpLabel}`,
       `Name: ${fullName}`,
       `Email: ${email}`,
-      `Country: ${countryLabel}`,
-      `Job title: ${jobTitle || "-"}`,
-      `Company: ${company}`,
+      `Phone: ${phone || "-"}`,
       "",
       "Message:",
-      message,
+      messageLabel,
     ].join("\n"),
     html,
   });

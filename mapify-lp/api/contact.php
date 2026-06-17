@@ -47,6 +47,16 @@ function clean(string $value, int $max = 500): string
     return $value;
 }
 
+function postValue(array $keys): string
+{
+    foreach ($keys as $key) {
+        if (isset($_POST[$key]) && trim((string) $_POST[$key]) !== '') {
+            return (string) $_POST[$key];
+        }
+    }
+    return '';
+}
+
 $helpLabels = [
     'maps-api'    => 'Maps API',
     'gis'         => 'GIS Platform',
@@ -58,37 +68,52 @@ $helpLabels = [
     'other'       => 'Other',
 ];
 
-$countryLabels = [
-    'US'    => 'United States',
-    'CA'    => 'Canada',
-    'GB'    => 'United Kingdom',
-    'IN'    => 'India',
-    'AU'    => 'Australia',
-    'other' => 'Other',
-];
-
 // Honeypot (leave empty in real submissions)
 if (!empty($_POST['website'] ?? '')) {
     echo json_encode(['ok' => true, 'message' => 'Thank you']);
     exit;
 }
 
-$helpType  = clean((string) ($_POST['helpType'] ?? ''), 64);
-$firstName = clean((string) ($_POST['firstName'] ?? ''), 100);
-$lastName  = clean((string) ($_POST['lastName'] ?? ''), 100);
-$email     = clean((string) ($_POST['email'] ?? ''), 254);
-$country   = clean((string) ($_POST['country'] ?? ''), 64);
-$jobTitle  = clean((string) ($_POST['jobTitle'] ?? ''), 120);
-$company   = clean((string) ($_POST['company'] ?? ''), 200);
-$message   = clean((string) ($_POST['message'] ?? ''), 500);
-$source    = clean((string) ($_POST['source'] ?? 'website'), 32);
+$contentType = strtolower((string) ($_SERVER['CONTENT_TYPE'] ?? ''));
+if (empty($_POST) && strpos($contentType, 'application/json') !== false) {
+    $jsonPayload = json_decode((string) file_get_contents('php://input'), true);
+    if (is_array($jsonPayload)) {
+        $_POST = $jsonPayload;
+    }
+}
 
-if ($helpType === '' || $firstName === '' || $lastName === '' || $email === '' || $country === '' || $company === '' || $message === '') {
-    jsonError('Please fill in all required fields.');
+$source    = clean(postValue(['source']), 32);
+$helpType  = clean(postValue(['helpType', 'topic', 'demoTopic']), 64);
+$fullName  = clean(postValue(['fullName', 'fullname', 'name', 'your-name']), 200);
+$firstName = clean(postValue(['firstName', 'first_name', 'fname']), 100);
+$lastName  = clean(postValue(['lastName', 'last_name', 'lname']), 100);
+$email     = clean(postValue(['email', 'emailAddress', 'your-email']), 254);
+$phone     = clean(postValue(['phone', 'phoneNumber', 'telephone', 'mobile']), 32);
+$message   = clean(postValue(['message', 'comments', 'details']), 500);
+
+if ($fullName === '') {
+    $fullName = trim($firstName . ' ' . $lastName);
+}
+
+if ($fullName === '') {
+    $fullName = 'Website lead';
+}
+
+if ($email === '') {
+    jsonError('Please enter your email address.');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     jsonError('Please enter a valid email address.');
+}
+
+$phone = preg_replace('/\D+/', '', $phone) ?? '';
+if ($phone !== '' && !preg_match('/^\d{10}$/', $phone)) {
+    jsonError('Please enter exactly 10 digits for phone number.');
+}
+
+if ($helpType === '') {
+    $helpType = 'other';
 }
 
 if (!isset($helpLabels[$helpType])) {
@@ -96,33 +121,29 @@ if (!isset($helpLabels[$helpType])) {
 }
 
 $helpLabel    = $helpLabels[$helpType];
-$countryLabel = $countryLabels[$country] ?? $country;
 $sourceLabel  = $source === 'hero' ? 'Hero form' : ($source === 'modal' ? 'Popup form' : $source);
+$messageLabel = $message !== '' ? $message : '-';
 
-$subject = 'MapifyIt demo request: ' . $helpLabel . ' - ' . $company;
+$subject = 'MapifyIt demo request: ' . $helpLabel . ' - ' . $fullName;
 
 $bodyHtml = '
 <h2>New demo booking request</h2>
 <p><strong>Source:</strong> ' . htmlspecialchars($sourceLabel, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Topic:</strong> ' . htmlspecialchars($helpLabel, ENT_QUOTES, 'UTF-8') . '</p>
-<p><strong>Name:</strong> ' . htmlspecialchars($firstName . ' ' . $lastName, ENT_QUOTES, 'UTF-8') . '</p>
+<p><strong>Name:</strong> ' . htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Email:</strong> ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</p>
-<p><strong>Country:</strong> ' . htmlspecialchars($countryLabel, ENT_QUOTES, 'UTF-8') . '</p>
-<p><strong>Job title:</strong> ' . htmlspecialchars($jobTitle !== '' ? $jobTitle : '-', ENT_QUOTES, 'UTF-8') . '</p>
-<p><strong>Company:</strong> ' . htmlspecialchars($company, ENT_QUOTES, 'UTF-8') . '</p>
+<p><strong>Phone:</strong> ' . htmlspecialchars($phone !== '' ? $phone : '-', ENT_QUOTES, 'UTF-8') . '</p>
 <p><strong>Message:</strong></p>
-<p>' . nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8')) . '</p>
+<p>' . nl2br(htmlspecialchars($messageLabel, ENT_QUOTES, 'UTF-8')) . '</p>
 ';
 
 $bodyText = "New demo booking request\n\n"
     . "Source: {$sourceLabel}\n"
     . "Topic: {$helpLabel}\n"
-    . "Name: {$firstName} {$lastName}\n"
+    . "Name: {$fullName}\n"
     . "Email: {$email}\n"
-    . "Country: {$countryLabel}\n"
-    . "Job title: " . ($jobTitle !== '' ? $jobTitle : '-') . "\n"
-    . "Company: {$company}\n\n"
-    . "Message:\n{$message}\n";
+    . "Phone: " . ($phone !== '' ? $phone : '-') . "\n\n"
+    . "Message:\n{$messageLabel}\n";
 
 try {
     $mail = new PHPMailer(true);
@@ -146,7 +167,7 @@ try {
 
     $mail->setFrom($config['from_email'], $config['from_name']);
     $mail->addAddress($config['to_email'], $config['to_name'] ?? '');
-    $mail->addReplyTo($email, $firstName . ' ' . $lastName);
+    $mail->addReplyTo($email, $fullName);
 
     $mail->isHTML(true);
     $mail->Subject = $subject;

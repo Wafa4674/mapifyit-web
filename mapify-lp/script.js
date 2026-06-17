@@ -132,13 +132,42 @@
     window.location.href = `${THANK_YOU_URL}?from=${encodeURIComponent(source)}`;
   }
 
-  async function sendContactForm(form) {
-    const formData = new FormData(form);
-    if (form.id === 'heroContactForm') {
-      formData.set('source', 'hero');
-    } else if (form.id === 'modalContactForm') {
-      formData.set('source', 'modal');
+  function getFieldValue(form, selectors) {
+    for (const selector of selectors) {
+      const field = form.querySelector(selector);
+      if (field && typeof field.value === 'string' && field.value.trim() !== '') {
+        return field.value.trim();
+      }
     }
+    return '';
+  }
+
+  function buildContactFormData(form) {
+    const formData = new FormData(form);
+    const firstName = getFieldValue(form, ['[name="firstName"]']);
+    const lastName = getFieldValue(form, ['[name="lastName"]']);
+    const fullName = getFieldValue(form, ['[name="fullName"]', '[name="name"]']) || `${firstName} ${lastName}`.trim();
+    const source = form.id === 'heroContactForm' ? 'hero' : 'modal';
+
+    formData.set('source', source);
+    formData.set('fullName', fullName);
+    formData.set('email', getFieldValue(form, ['[name="email"]', 'input[type="email"]']));
+    formData.set('phone', getFieldValue(form, ['[name="phone"]', 'input[type="tel"]']));
+    formData.set('helpType', getFieldValue(form, ['[name="helpType"]', 'select']));
+    formData.set('message', getFieldValue(form, ['[name="message"]', 'textarea']));
+
+    if (firstName) {
+      formData.set('firstName', firstName);
+    }
+    if (lastName) {
+      formData.set('lastName', lastName);
+    }
+
+    return formData;
+  }
+
+  async function sendContactForm(form) {
+    const formData = buildContactFormData(form);
 
     const res = await fetch(CONTACT_API, {
       method: 'POST',
@@ -188,11 +217,37 @@
     });
   }
 
+  function bindTenDigitPhone(phoneField) {
+    if (!phoneField) return;
+
+    phoneField.addEventListener('input', () => {
+      const digits = phoneField.value.replace(/\D/g, '').slice(0, 10);
+      if (phoneField.value !== digits) {
+        phoneField.value = digits;
+      }
+      if (digits.length === 10) {
+        phoneField.setCustomValidity('');
+      } else {
+        phoneField.setCustomValidity('Please enter exactly 10 digits.');
+      }
+    });
+
+    phoneField.addEventListener('blur', () => {
+      const digits = phoneField.value.replace(/\D/g, '');
+      if (digits.length !== 10) {
+        phoneField.setCustomValidity('Please enter exactly 10 digits.');
+      }
+    });
+  }
+
   const heroForm = document.getElementById('heroContactForm');
   if (heroForm) {
+    const phoneField = heroForm.querySelector('#phone');
     const messageField = heroForm.querySelector('#message');
     const messageCount = document.getElementById('messageCount');
     const maxMsg = 500;
+
+    bindTenDigitPhone(phoneField);
 
     if (messageField && messageCount) {
       messageField.setAttribute('maxlength', String(maxMsg));
@@ -256,9 +311,12 @@
 
   const modalForm = document.getElementById('modalContactForm');
   if (modalForm) {
+    const modalPhone = modalForm.querySelector('#modalPhone');
     const modalMessage = modalForm.querySelector('#modalMessage');
     const modalMessageCount = document.getElementById('modalMessageCount');
     const maxMsg = 500;
+
+    bindTenDigitPhone(modalPhone);
 
     if (modalMessage && modalMessageCount) {
       modalMessage.setAttribute('maxlength', String(maxMsg));
@@ -273,6 +331,6 @@
       if (modalMessageCount) modalMessageCount.textContent = `0 / ${maxMsg}`;
     });
 
-    bindFormSubmit(modalForm, '.btn-submit', 'Book Free Demo');
+    bindFormSubmit(modalForm, '.modal-submit', 'Book Free Demo');
   }
 })();

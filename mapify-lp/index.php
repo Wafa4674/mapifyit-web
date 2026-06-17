@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-  <script>
+    <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -77,73 +78,48 @@
             <div class="hero-form-accent" aria-hidden="true"></div>
             <header class="hero-form-header">
               <span class="hero-form-badge">Free Demo</span>
-              <h3>Book your free demo</h3>
+              <h3>Book Your Free Demo</h3>
               <p>Tell us what you'd like to see — we'll schedule your demo within one business day.</p>
               <span class="hero-form-divider" aria-hidden="true">
                 <span class="hero-form-divider-glow"></span>
               </span>
             </header>
-            <div class="form-group form-group--select">
-              <label for="helpType">What would you like to demo?</label>
-              <div class="select-wrap select-wrap--hero">
-                <select id="helpType" name="helpType" required>
-                  <option value="" disabled selected>Select a topic...</option>
-                  <option value="maps-api">Maps API</option>
-                <option value="gis">ArcGIS or Esri Project</option>
-                <option value="custom-gis">Custom GIS Project</option>
-                <option value="routing">Routing &amp; Optimization</option>
-                <option value="on-premise">On-Premise Deployment</option>
-                <option value="fleet">Fleet Management System</option>
-                <option value="ekyc">NG eKYC / Identity Verification</option>
-                <option value="field-force">Field Force Tracking</option>
-                <option value="last-mile">Last Mile Delivery System</option>
-                <option value="proof-delivery">Proof of Delivery System</option>
-                <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group field-float">
-                <input type="text" id="firstName" name="firstName" placeholder=" " required autocomplete="given-name">
-                <label for="firstName">First Name <span class="req">*</span></label>
-              </div>
-              <div class="form-group field-float">
-                <input type="text" id="lastName" name="lastName" placeholder=" " required autocomplete="family-name">
-                <label for="lastName">Last Name <span class="req">*</span></label>
-              </div>
+            <div class="form-group field-float">
+              <input type="text" id="fullName" name="fullName" placeholder=" " required autocomplete="name">
+              <label for="fullName">Full Name <span class="req">*</span></label>
             </div>
             <div class="form-row">
               <div class="form-group field-float">
                 <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
-                <label for="email">Business Email <span class="req">*</span></label>
+                <label for="email">Email Address <span class="req">*</span></label>
               </div>
-              <div class="form-group form-group--select">
-                <div class="select-wrap select-wrap--hero">
-                  <select id="country" name="country" required>
-                    <option value="" disabled selected>Select country...</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="IN">India</option>
-                    <option value="AU">Australia</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+              <div class="form-group field-float">
+                <input type="tel" id="phone" name="phone" placeholder=" " required autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter exactly 10 digits">
+                <label for="phone">Phone Number <span class="req">*</span></label>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group field-float">
-                <input type="text" id="jobTitle" name="jobTitle" placeholder=" " autocomplete="organization-title">
-                <label for="jobTitle">Job Title</label>
-              </div>
-              <div class="form-group field-float">
-                <input type="text" id="company" name="company" placeholder=" " required autocomplete="organization">
-                <label for="company">Company Name <span class="req">*</span></label>
+            <div class="form-group form-group--select">
+              <label for="helpType">What would you like to demo?</label>
+              <div class="select-wrap select-wrap--hero">
+                <select id="helpType" name="helpType">
+                  <option value="" selected>Select a topic...</option>
+                  <option value="maps-api">Maps API</option>
+                  <option value="gis">ArcGIS or Esri Project</option>
+                 <option value="custom-gis">Custom GIS Project</option>
+                  <option value="routing">Routing &amp; Optimization</option>
+                  <option value="on-premise">On-Premise Deployment</option>
+                  <option value="fleet">Fleet Management System</option>
+                  <option value="ekyc">NG eKYC / Identity Verification</option>
+                  <option value="field-force">Field Force Tracking</option>
+                                    <option value="last-mile">Last Mile Delivery System</option>
+                                  <option value="proof-delivery">Proof of Delivery System</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
             </div>
             <div class="form-group field-float field-float--area">
-              <textarea id="message" name="message" rows="3" placeholder=" " required></textarea>
-              <label for="message">What would you like to see in your demo? <span class="req">*</span></label>
+              <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+              <label for="message">What would you like to see in your demo?</label>
               <span class="field-char-count" id="messageCount" aria-live="polite">0 / 500</span>
             </div>
             <div class="form-submit">
@@ -174,7 +150,7 @@
           </div>
         </div>
         <div class="benefit-media bordered">
-          <img src="assets/mapify-m.png" alt="Digital map and geospatial visualization">
+          <img src="assets/map1.png" alt="Digital map and geospatial visualization">
         </div>
       </div>
 
@@ -504,107 +480,119 @@
     <div class="modal-backdrop js-close-contact" aria-label="Close dialog"></div>
     <div class="modal-dialog">
       <div class="modal-form-wrap">
-        <svg class="hero-form-glow-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="modalFormGlowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="80" y2="0">
-              <stop offset="0%" stop-color="transparent"/>
-              <stop offset="35%" stop-color="#60a5fa"/>
-              <stop offset="50%" stop-color="#ffffff"/>
-              <stop offset="65%" stop-color="#3080ff"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </linearGradient>
-          </defs>
-          <rect class="hero-form-glow-path modal-form-glow-path" x="1" y="1" width="100%" height="100%" rx="16" ry="16" pathLength="100"/>
-        </svg>
-        <button type="button" class="modal-close js-close-contact" aria-label="Close">&times;</button>
-        <form class="contact-form hero-form modal-form" id="modalContactForm" novalidate aria-labelledby="contactModalTitle">
-          <input type="text" name="website" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="hero-form-accent" aria-hidden="true"></div>
-          <header class="hero-form-header">
-            <span class="hero-form-badge">Free Demo</span>
-            <h3 id="contactModalTitle">Book your free demo</h3>
-            <p>Tell us what you'd like to see — we'll schedule your demo within one business day.</p>
-            <span class="hero-form-divider" aria-hidden="true">
-              <span class="hero-form-divider-glow"></span>
-            </span>
-          </header>
-          <div class="form-group form-group--select">
-            <label for="modalHelpType">What would you like to demo?</label>
-            <div class="select-wrap select-wrap--hero">
-              <select id="modalHelpType" name="helpType" required>
-                <option value="" disabled selected>Select a topic...</option>
-                <option value="maps-api">Maps API</option>
-                <option value="gis">ArcGIS or Esri Project</option>
-                <option value="gis">Custom GIS Project</option>
-                <option value="routing">Routing &amp; Optimization</option>
-                <option value="on-premise">On-Premise Deployment</option>
-                <option value="fleet">Fleet Management System</option>
-                <option value="ekyc">NG eKYC / Identity Verification</option>
-                <option value="field-force">Field Force Tracking</option>
-                <option value="last-mile">Last Mile Delivery System</option>
-                <option value="proof-delivery">Proof of Delivery System</option>
-                <option value="other">Other</option>
-              </select>
+        <div class="modal-card">
+          <div class="modal-card-header">
+            <button type="button" class="modal-close js-close-contact" aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="modal-header-content">
+              <span class="modal-card-badge">
+                <span class="modal-card-badge-dot" aria-hidden="true"></span>
+                Free Demo
+              </span>
+              <h3 id="contactModalTitle">Book Your Free Demo</h3>
+              <p>Tell us what you'd like to see — we'll schedule your session within one business day.</p>
+              <ul class="modal-trust-list" aria-label="Demo benefits">
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  No credit card
+                </li>
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  30-min live walkthrough
+                </li>
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Expert guidance
+                </li>
+              </ul>
             </div>
+            <div class="modal-header-orb modal-header-orb--1" aria-hidden="true"></div>
+            <div class="modal-header-orb modal-header-orb--2" aria-hidden="true"></div>
+            <div class="modal-header-grid" aria-hidden="true"></div>
           </div>
-          <div class="form-row">
-            <div class="form-group field-float">
-              <input type="text" id="modalFirstName" name="firstName" placeholder=" " required autocomplete="given-name">
-              <label for="modalFirstName">First Name <span class="req">*</span></label>
-            </div>
-            <div class="form-group field-float">
-              <input type="text" id="modalLastName" name="lastName" placeholder=" " required autocomplete="family-name">
-              <label for="modalLastName">Last Name <span class="req">*</span></label>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group field-float">
-              <input type="email" id="modalEmail" name="email" placeholder=" " required autocomplete="email">
-              <label for="modalEmail">Business Email <span class="req">*</span></label>
-            </div>
-            <div class="form-group form-group--select">
-              <div class="select-wrap select-wrap--hero">
-                <select id="modalCountry" name="country" required>
-                  <option value="" disabled selected>Select country...</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="IN">India</option>
-                  <option value="AU">Australia</option>
+          <form class="modal-form" id="modalContactForm" novalidate aria-labelledby="contactModalTitle">
+            <input type="text" name="website" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="modal-form-grid">
+              <div class="modal-field modal-field--full">
+                <label class="modal-label" for="modalFullName">Full Name <span class="req">*</span></label>
+                <div class="modal-input-wrap">
+                  <span class="modal-input-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM6 20a6 6 0 0112 0" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+                  </span>
+                  <input type="text" id="modalFullName" name="fullName" placeholder="John Smith" required autocomplete="name">
+                </div>
+              </div>
+              <div class="modal-field">
+                <label class="modal-label" for="modalEmail">Email Address <span class="req">*</span></label>
+                <div class="modal-input-wrap">
+                  <span class="modal-input-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7l8 5 8-5M4 7h16v10H4V7z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+                  </span>
+                  <input type="email" id="modalEmail" name="email" placeholder="you@company.com" required autocomplete="email">
+                </div>
+              </div>
+              <div class="modal-field">
+                <label class="modal-label" for="modalPhone">Phone Number <span class="req">*</span></label>
+                <div class="modal-input-wrap">
+                  <span class="modal-input-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <input type="tel" id="modalPhone" name="phone" placeholder="8889807422" required autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter exactly 10 digits">
+                </div>
+              </div>
+              <div class="modal-field modal-field--full">
+                <label class="modal-label" for="modalHelpType">What would you like to demo?</label>
+                <div class="modal-input-wrap modal-input-wrap--select">
+                  <span class="modal-input-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg>
+                  </span>
+                  <select id="modalHelpType" name="helpType">
+                    <option value="" selected>Select a topic...</option>
+                  <option value="maps-api">Maps API</option>
+                  <option value="gis">ArcGIS or Esri Project</option>
+                 <option value="custom-gis">Custom GIS Project</option>
+                  <option value="routing">Routing &amp; Optimization</option>
+                  <option value="on-premise">On-Premise Deployment</option>
+                  <option value="fleet">Fleet Management System</option>
+                  <option value="ekyc">NG eKYC / Identity Verification</option>
+                  <option value="field-force">Field Force Tracking</option>
+                                    <option value="last-mile">Last Mile Delivery System</option>
+                                  <option value="proof-delivery">Proof of Delivery System</option>
                   <option value="other">Other</option>
-                </select>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-field modal-field--full">
+                <label class="modal-label" for="modalMessage">What would you like to see in your demo?</label>
+                <div class="modal-input-wrap modal-input-wrap--area">
+                  <textarea id="modalMessage" name="message" rows="3" placeholder="Share your use case, team size, or specific features you want to explore..."></textarea>
+                  <span class="field-char-count modal-char-count" id="modalMessageCount" aria-live="polite">0 / 500</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group field-float">
-              <input type="text" id="modalJobTitle" name="jobTitle" placeholder=" " autocomplete="organization-title">
-              <label for="modalJobTitle">Job Title</label>
+            <div class="modal-form-footer">
+              <div class="modal-submit-wrap">
+                <button type="submit" class="btn btn-primary btn-submit modal-submit">
+                  <span class="modal-submit-shine" aria-hidden="true"></span>
+                  <span class="btn-submit-text">Book Free Demo</span>
+                  <span class="btn-submit-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+              </div>
+              <p class="modal-form-note">By submitting, you agree to be contacted about MapifyIt products.</p>
             </div>
-            <div class="form-group field-float">
-              <input type="text" id="modalCompany" name="company" placeholder=" " required autocomplete="organization">
-              <label for="modalCompany">Company Name <span class="req">*</span></label>
-            </div>
-          </div>
-          <div class="form-group field-float field-float--area">
-            <textarea id="modalMessage" name="message" rows="3" placeholder=" " required></textarea>
-            <label for="modalMessage">What would you like to see in your demo? <span class="req">*</span></label>
-            <span class="field-char-count" id="modalMessageCount" aria-live="polite">0 / 500</span>
-          </div>
-          <div class="form-submit">
-            <button type="submit" class="btn btn-primary btn-submit hero-form-submit">
-              <span class="btn-submit-text">Book Free Demo</span>
-              <span class="btn-submit-icon" aria-hidden="true">→</span>
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
-  <!--Start of Tawk.to Script-->
-  <script>
+   <script>
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
       var s1 = document.createElement("script");
@@ -628,6 +616,5 @@
           };
         `}
   </Script>
-  <!--End of Tawk.to Script-->
 </body>
 </html>
