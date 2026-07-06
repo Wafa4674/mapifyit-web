@@ -153,7 +153,9 @@ function rewriteHtml(html: string) {
     .replaceAll('href="assets/', 'href="/lp/assets/')
     .replaceAll('src="assets/', 'src="/lp/assets/')
     .replaceAll('src="script.js"', 'src="/lp/script.js"')
-    .replaceAll('href="index.php"', 'href="/lp"');
+    .replaceAll('href="index.php"', 'href="/lp"')
+    .replaceAll('fetch("send-demo.php"', 'fetch("/lp/send-demo.php"')
+    .replaceAll('window.location.href = "thank-you.php"', 'window.location.href = "/lp/thank-you.php"');
 }
 
 function rewriteScript(script: string) {
@@ -273,6 +275,97 @@ async function handleContact(request: Request) {
   return Response.json({ ok: true, message: "Thank you! We will be in touch soon." });
 }
 
+async function handleDemoRequest(request: Request) {
+  if (request.method !== "POST") {
+    return Response.json(
+      { success: false, message: "Method not allowed." },
+      { status: 405 },
+    );
+  }
+
+  let input: Record<string, unknown> = {};
+
+  try {
+    input = (await request.json()) as Record<string, unknown>;
+  } catch {
+    return Response.json(
+      { success: false, message: "Invalid request payload." },
+      { status: 400 },
+    );
+  }
+
+  const fullName = clean(String(input.fullName ?? ""), 200);
+  const email = clean(String(input.email ?? ""), 254);
+  const companyName = clean(String(input.companyName ?? ""), 200);
+  const phone = clean(String(input.phone ?? ""), 64);
+  const demoType = clean(String(input.demoType ?? ""), 100);
+  const message = clean(String(input.message ?? ""), 1000);
+  const source = clean(String(input.source ?? "Website Form"), 100);
+
+  if (fullName === "" || email === "" || phone === "" || demoType === "") {
+    return Response.json(
+      { success: false, message: "Please fill in all required fields." },
+      { status: 422 },
+    );
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return Response.json(
+      { success: false, message: "Please enter a valid email address." },
+      { status: 422 },
+    );
+  }
+
+  const smtpConfig = await loadLandingSmtpConfig();
+  const transporter = nodemailer.createTransport({
+    host: smtpConfig.host,
+    port: smtpConfig.port,
+    secure: smtpConfig.encryption === "ssl",
+    auth: {
+      user: smtpConfig.user,
+      pass: smtpConfig.pass,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  const html = `
+    <h2>New Request</h2>
+    <p><strong>Source:</strong> ${escapeHtml(source)}</p>
+    <p><strong>Full Name:</strong> ${escapeHtml(fullName)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Company:</strong> ${escapeHtml(companyName || "-")}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+    <p><strong>Demo Type:</strong> ${escapeHtml(demoType)}</p>
+    <p><strong>Message:</strong><br>${escapeHtml(message || "-").replaceAll("\n", "<br>")}</p>
+  `;
+
+  await transporter.sendMail({
+    from: smtpConfig.fromName ? `${smtpConfig.fromName} <${smtpConfig.from}>` : smtpConfig.from,
+    to: smtpConfig.recipients,
+    replyTo: email,
+    subject: `New Request - ${demoType}`,
+    text: [
+      "New Request",
+      "",
+      `Source: ${source}`,
+      `Full Name: ${fullName}`,
+      `Email: ${email}`,
+      `Company: ${companyName || "-"}`,
+      `Phone: ${phone}`,
+      `Demo Type: ${demoType}`,
+      `Message: ${message || "-"}`,
+    ].join("\n"),
+    html,
+  });
+
+  return Response.json({
+    success: true,
+    message: "Thank you! Your demo request has been sent successfully.",
+  });
+}
+
 export async function GET(
   _request: Request,
   context: { params: Promise<{ path?: string[] }> },
@@ -280,7 +373,7 @@ export async function GET(
   const params = await context.params;
   const parts = params.path ?? [];
 
-  if (parts.join("/") === "api/contact.php") {
+  if (parts.join("/") === "api/contact.php" || parts.join("/") === "send-demo.php") {
     return jsonError("Method not allowed", 405);
   }
 
@@ -323,13 +416,29 @@ export async function POST(
   context: { params: Promise<{ path?: string[] }> },
 ) {
   const params = await context.params;
+  const routePath = (params.path ?? []).join("/");
 
-  if ((params.path ?? []).join("/") === "api/contact.php") {
+  if (routePath === "api/contact.php") {
     try {
       return await handleContact(request);
     } catch (error) {
       console.error("MapifyIt landing contact error:", error);
       return jsonError("Could not send your message. Please call 888-980-7422.", 500);
+    }
+  }
+
+  if (routePath === "send-demo.php") {
+    try {
+      return await handleDemoRequest(request);
+    } catch (error) {
+      console.error("MapifyIt landing demo error:", error);
+      return Response.json(
+        {
+          success: false,
+          message: "Unable to send your request right now. Please try again later.",
+        },
+        { status: 500 },
+      );
     }
   }
 

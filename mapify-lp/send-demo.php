@@ -46,9 +46,9 @@ try {
         jsonResponse(422, ['success' => false, 'message' => 'Please enter a valid email address.']);
     }
 
-    $configPath = __DIR__ . '/config/mail.php';
+    $configPath = __DIR__ . '/config.php';
     if (!file_exists($configPath)) {
-        jsonResponse(500, ['success' => false, 'message' => 'Mail configuration is missing. Copy config/mail.example.php to config/mail.php.']);
+        jsonResponse(500, ['success' => false, 'message' => 'Mail configuration is missing. Please create mapify-lp/config.php.']);
     }
 
     $config = require $configPath;
@@ -57,9 +57,9 @@ try {
     $mail->isSMTP();
     $mail->Host = (string) $config['smtp_host'];
     $mail->SMTPAuth = true;
-    $mail->Username = (string) $config['smtp_user'];
-    $mail->Password = (string) $config['smtp_pass'];
-    $mail->SMTPSecure = (string) $config['smtp_secure'];
+    $mail->Username = (string) ($config['smtp_username'] ?? $config['smtp_user'] ?? '');
+    $mail->Password = (string) ($config['smtp_password'] ?? $config['smtp_pass'] ?? '');
+    $mail->SMTPSecure = (string) ($config['smtp_encryption'] ?? $config['smtp_secure'] ?? '');
     $mail->Port = (int) $config['smtp_port'];
     $mail->CharSet = 'UTF-8';
 

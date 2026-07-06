@@ -11,7 +11,9 @@ function rewriteHtml(html: string) {
     .replaceAll('href="assets/', 'href="/lp/assets/')
     .replaceAll('src="assets/', 'src="/lp/assets/')
     .replaceAll('src="script.js"', 'src="/lp/script.js"')
-    .replaceAll('href="index.php"', 'href="/lp"');
+    .replaceAll('href="index.php"', 'href="/lp"')
+    .replaceAll('fetch("send-demo.php"', 'fetch("/lp/send-demo.php"')
+    .replaceAll('window.location.href = "thank-you.php"', 'window.location.href = "/lp/thank-you.php"');
 }
 
 export async function GET() {
