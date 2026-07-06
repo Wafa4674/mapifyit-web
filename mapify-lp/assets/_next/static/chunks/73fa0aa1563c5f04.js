@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,21372,e=>{"use strict";var t=e.i(43476),o=e.i(71645);let r=(0,o.createContext)({mapReady:!1});function a({children:e}){return(0,t.jsx)(r.Provider,{value:{mapReady:!1},children:e})}e.s(["MapProvider",()=>a,"useMapContext",0,()=>(0,o.useContext)(r)])}]);
