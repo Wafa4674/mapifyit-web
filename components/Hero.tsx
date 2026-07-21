@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
-import { Activity, BarChart3, ChevronLeft, ChevronRight, Gauge, ShieldCheck, Zap } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Activity, BarChart3, Gauge, ShieldCheck, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -25,7 +25,7 @@ type BusinessPlatform = {
 };
 
 const businessPlatforms: BusinessPlatform[] = [
-  { name: 'SAP', type: 'ERP', logo: '/platform-logos/sap.svg', logoClassName: 'h-10 w-32' },
+  { name: 'SAP', type: 'ERP', logo: '/platform-logos/sap.svg', logoClassName: 'h-12 w-32' },
   { name: 'Oracle NetSuite', type: 'ERP', logo: '/platform-logos/oracle-netsuite.svg', logoClassName: 'h-3 w-25' },
   {
     name: 'Microsoft Dynamics 365',
@@ -34,12 +34,12 @@ const businessPlatforms: BusinessPlatform[] = [
     logoClassName: 'h-10 w-26',
     lightenWordmark: true,
   },
-  { name: 'Odoo', type: 'ERP', logo: '/platform-logos/odoo.svg', logoClassName: 'h-10 w-32' },
-  { name: 'Sage', type: 'ERP', logo: '/platform-logos/sage.svg', logoClassName: 'h-9 w-32' },
-  { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-9 w-36' },
+  { name: 'Odoo', type: 'ERP', logo: '/platform-logos/odoo.svg', logoClassName: 'h-11 w-20' },
+  { name: 'Sage', type: 'ERP', logo: '/platform-logos/sage.svg', logoClassName: 'h-10 w-32' },
+  { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-10 w-60' },
   { name: 'HubSpot', type: 'CRM', logo: '/platform-logos/hubspot.svg', logoClassName: 'h-10 w-36' },
   { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-16 w-40' },
-  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-22 w-30' },
+  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-23 w-30' },
 ];
 
 const heroStats = [
@@ -68,7 +68,6 @@ const heroStats = [
 
 function PlatformCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -76,60 +75,46 @@ function PlatformCarousel() {
 
     let animationFrame: number;
     let previousTime = performance.now();
+
+    const getLoopPoint = () => {
+      const firstItem = carousel.children[0] as HTMLElement | undefined;
+      const firstDuplicate = carousel.children[businessPlatforms.length] as HTMLElement | undefined;
+
+      return firstItem && firstDuplicate
+        ? firstDuplicate.offsetLeft - firstItem.offsetLeft
+        : carousel.scrollWidth / 3;
+    };
+
+    const normalizeScroll = () => {
+      const loopPoint = getLoopPoint();
+      if (!loopPoint) return;
+
+      if (carousel.scrollLeft >= loopPoint * 2) carousel.scrollLeft -= loopPoint;
+      if (carousel.scrollLeft <= 0) carousel.scrollLeft += loopPoint;
+    };
+
+    requestAnimationFrame(() => {
+      carousel.scrollLeft = getLoopPoint();
+    });
+
     const moveCarousel = (currentTime: number) => {
-      if (!isPaused) {
-        const elapsed = Math.min(currentTime - previousTime, 50);
-        carousel.scrollLeft += elapsed * 0.03;
-
-        const firstItem = carousel.children[0] as HTMLElement | undefined;
-        const firstDuplicate = carousel.children[businessPlatforms.length] as HTMLElement | undefined;
-        const loopPoint = firstItem && firstDuplicate
-          ? firstDuplicate.offsetLeft - firstItem.offsetLeft
-          : carousel.scrollWidth / 2;
-
-        if (carousel.scrollLeft >= loopPoint) carousel.scrollLeft -= loopPoint;
-      }
+      const elapsed = Math.min(currentTime - previousTime, 50);
+      carousel.scrollLeft += elapsed * 0.03;
+      normalizeScroll();
       previousTime = currentTime;
       animationFrame = window.requestAnimationFrame(moveCarousel);
     };
 
     animationFrame = window.requestAnimationFrame(moveCarousel);
     return () => window.cancelAnimationFrame(animationFrame);
-  }, [isPaused]);
-
-  const move = (direction: -1 | 1) => {
-    carouselRef.current?.scrollBy({ left: direction * 280, behavior: 'smooth' });
-  };
+  }, []);
 
   return (
-    <div
-      className="relative mt-12 lg:mt-16"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div className="mb-5 flex items-center justify-between gap-4">
-        <p></p>
-        <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 flex text-center">
+    <div className="relative mt-12 lg:mt-16">
+      <div className="mb-5 flex items-center justify-center">
+        <p className="text-center text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
           Built to connect with leading ERP &amp; CRM platforms
         </p>
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            onClick={() => move(-1)}
-            aria-label="Show previous platforms"
-            className="grid size-9 place-items-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-300 transition hover:border-blue-500/60 hover:text-white"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => move(1)}
-            aria-label="Show more platforms"
-            className="grid size-9 place-items-center rounded-full border border-slate-700 bg-slate-900/70 text-slate-300 transition hover:border-blue-500/60 hover:text-white"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
       </div>
 
       <div className="pointer-events-none absolute inset-y-12 left-0 z-10 w-12 bg-gradient-to-r from-[#03060D] to-transparent" />
@@ -139,10 +124,10 @@ function PlatformCarousel() {
         aria-label="Supported ERP and CRM platforms"
         className="platform-carousel flex gap-4 overflow-x-auto pb-2"
       >
-        {[...businessPlatforms, ...businessPlatforms].map((platform, index) => (
+        {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
           <div
             key={`${platform.name}-${index}`}
-            aria-hidden={index >= businessPlatforms.length}
+            aria-hidden={index < businessPlatforms.length || index >= businessPlatforms.length * 2}
             className="flex min-w-[260px] items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 px-4 py-4 backdrop-blur-sm transition hover:border-slate-600 hover:bg-slate-900"
           >
             <div className="relative flex h-14 min-w-40 items-center justify-center px-1">
@@ -166,9 +151,9 @@ function PlatformCarousel() {
                 />
               )}
             </div>
-            <span className="whitespace-nowrap rounded-full border border-slate-700 bg-slate-950/70 px-2.5 py-1 text-[9px] font-bold tracking-wider text-slate-400">
+            {/* <span className="whitespace-nowrap rounded-full border border-slate-700 bg-slate-950/70 px-2.5 py-1 text-[9px] font-bold tracking-wider text-slate-400">
               {platform.type}
-            </span>
+            </span> */}
           </div>
         ))}
       </div>
