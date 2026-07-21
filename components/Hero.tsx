@@ -31,7 +31,7 @@ const businessPlatforms: BusinessPlatform[] = [
     name: 'Microsoft Dynamics 365',
     type: 'ERP + CRM',
     logo: '/platform-logos/dynamics-365.svg',
-    logoClassName: 'h-10 w-35',
+    logoClassName: 'h-10 w-26',
     lightenWordmark: true,
   },
   { name: 'Odoo', type: 'ERP', logo: '/platform-logos/odoo.svg', logoClassName: 'h-10 w-32' },
@@ -39,7 +39,7 @@ const businessPlatforms: BusinessPlatform[] = [
   { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-9 w-36' },
   { name: 'HubSpot', type: 'CRM', logo: '/platform-logos/hubspot.svg', logoClassName: 'h-10 w-36' },
   { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-16 w-40' },
-  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-17 w-45' },
+  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-22 w-30' },
 ];
 
 const heroStats = [
