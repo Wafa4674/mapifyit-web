@@ -18,7 +18,11 @@ const screens = [
   { id: "telemetry", label: "Telemetry", component: TelemetryScreen },
 ];
 
-const PhoneMockup = () => {
+type PhoneMockupProps = {
+  compact?: boolean;
+};
+
+const PhoneMockup = ({ compact = false }: PhoneMockupProps) => {
   const [activeScreen, setActiveScreen] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -46,7 +50,11 @@ const PhoneMockup = () => {
         <div className="absolute -inset-4 rounded-[3.5rem] bg-gradient-to-b from-primary/8 to-transparent md:blur-2xl blur-md" />
 
         <div
-          className="relative w-[320px] h-[660px] rounded-[3rem] p-[3px] phone-shadow"
+          className={`relative rounded-[3rem] p-[3px] phone-shadow ${
+            compact ? "h-[600px] w-[320px]" : "h-[660px] w-[320px]"
+          }`}
+                    // className="relative w-[320px] h-[660px] rounded-[3rem] p-[3px] phone-shadow"
+
           style={{
             background: "linear-gradient(145deg, hsl(222 20% 18%), hsl(222 25% 6%))",
           }}

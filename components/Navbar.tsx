@@ -189,7 +189,7 @@ export default function Navbar() {
               href="/contact-us"
               className={`text-sm font-medium transition-colors ${pathname === '/contact-us' ? 'text-white' : 'text-slate-300 hover:text-white'}`}
             >
-              Contact Us
+              Contact Sales
             </Link>
           </div>
 
