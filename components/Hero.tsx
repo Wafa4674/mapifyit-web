@@ -25,8 +25,8 @@ type BusinessPlatform = {
 };
 
 const businessPlatforms: BusinessPlatform[] = [
-  { name: 'SAP', type: 'ERP', logo: '/platform-logos/sap.svg', logoClassName: 'h-12 w-32' },
-  { name: 'Oracle NetSuite', type: 'ERP', logo: '/platform-logos/oracle-netsuite.svg', logoClassName: 'h-3 w-25' },
+  { name: 'SAP', type: 'ERP', logo: '/platform-logos/sap.svg', logoClassName: 'h-14 w-20' },
+  { name: 'Oracle NetSuite', type: 'ERP', logo: '/platform-logos/oracle-netsuite.svg', logoClassName: 'h-3 w-20' },
   {
     name: 'Microsoft Dynamics 365',
     type: 'ERP + CRM',
@@ -34,12 +34,12 @@ const businessPlatforms: BusinessPlatform[] = [
     logoClassName: 'h-10 w-26',
     lightenWordmark: true,
   },
-  { name: 'Odoo', type: 'ERP', logo: '/platform-logos/odoo.svg', logoClassName: 'h-11 w-20' },
-  { name: 'Sage', type: 'ERP', logo: '/platform-logos/sage.svg', logoClassName: 'h-10 w-32' },
-  { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-10 w-60' },
-  { name: 'HubSpot', type: 'CRM', logo: '/platform-logos/hubspot.svg', logoClassName: 'h-10 w-36' },
-  { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-16 w-40' },
-  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-23 w-30' },
+  { name: 'Odoo', type: 'ERP', logo: '/platform-logos/odoo.svg', logoClassName: 'h-15 w-20' },
+  { name: 'Sage', type: 'ERP', logo: '/platform-logos/sage.svg', logoClassName: 'h-12 w-20' },
+  { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-12 w-20' },
+  { name: 'HubSpot', type: 'CRM', logo: '/platform-logos/hubspot.svg', logoClassName: 'h-10 w-20' },
+  { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-17 w-20' },
+  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-50 w-26' },
 ];
 
 const heroStats = [
@@ -117,45 +117,42 @@ function PlatformCarousel() {
         </p>
       </div>
 
-      <div className="pointer-events-none absolute inset-y-12 left-0 z-10 w-12 bg-gradient-to-r from-[#03060D] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-12 right-0 z-10 w-12 bg-gradient-to-l from-[#03060D] to-transparent" />
-      <div
-        ref={carouselRef}
-        aria-label="Supported ERP and CRM platforms"
-        className="platform-carousel flex gap-4 overflow-x-auto pb-2"
-      >
-        {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
-          <div
-            key={`${platform.name}-${index}`}
-            aria-hidden={index < businessPlatforms.length || index >= businessPlatforms.length * 2}
-            className="flex min-w-[260px] items-center justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 px-4 py-4 backdrop-blur-sm transition hover:border-slate-600 hover:bg-slate-900"
-          >
-            <div className="relative flex h-14 min-w-40 items-center justify-center px-1">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/55 px-6 py-5 backdrop-blur-sm">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent" />
+        <div
+          ref={carouselRef}
+          aria-label="Supported ERP and CRM platforms"
+          className="platform-carousel flex h-16 touch-pan-x items-center gap-12 overflow-x-auto overflow-y-hidden overscroll-y-none"
+        >
+          {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
+            <div
+              key={`${platform.name}-${index}`}
+              aria-hidden={index < businessPlatforms.length || index >= businessPlatforms.length * 2}
+              className="relative flex h-16 min-w-20 shrink-0 items-center justify-center overflow-hidden px-2"
+            >
               <Image
                 src={platform.logo}
                 alt={index < businessPlatforms.length ? `${platform.name} logo` : ''}
-                width={160}
-                height={56}
+                width={180}
+                height={64}
                 unoptimized
-                className={`${platform.logoClassName ?? 'h-10 w-36'} object-contain`}
+                className={`${platform.logoClassName ?? 'h-10 w-36'} max-h-14 max-w-[180px] object-contain`}
               />
               {platform.lightenWordmark && (
                 <Image
                   src={platform.logo}
                   alt=""
-                  width={160}
-                  height={56}
+                  width={180}
+                  height={64}
                   unoptimized
                   aria-hidden="true"
-                  className={`pointer-events-none absolute ${platform.logoClassName ?? ''} object-contain brightness-0 invert [clip-path:inset(0_0_0_28%)]`}
+                  className={`pointer-events-none absolute ${platform.logoClassName ?? ''} max-h-14 max-w-[180px] object-contain brightness-0 invert [clip-path:inset(0_0_0_28%)]`}
                 />
               )}
             </div>
-            {/* <span className="whitespace-nowrap rounded-full border border-slate-700 bg-slate-950/70 px-2.5 py-1 text-[9px] font-bold tracking-wider text-slate-400">
-              {platform.type}
-            </span> */}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <style jsx>{`
