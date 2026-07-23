@@ -306,38 +306,12 @@
 // }
 
 "use client"
-import React, { useState, useEffect } from 'react';
-import FeatureSuites from '@/components/FeatureSuites';
-import { Map, Layers, Code, Globe, Route, Navigation, Search, Database, Check, Copy, ShieldCheck, Settings, ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Map, Layers, Route, Navigation, Search, Database, Check, Copy, ShieldCheck, Settings, ArrowLeft } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { useRouter } from 'next/navigation';
 
 import FAQSection from '@/components/FAQSection';
-
-const useTypewriter = (words: string[], speed = 100) => {
-    const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [reverse, setReverse] = useState(false);
-
-    useEffect(() => {
-        if (subIndex === words[index].length + 1 && !reverse) {
-            setTimeout(() => setReverse(true), 1500);
-            return;
-        }
-        if (subIndex === 0 && reverse) {
-            setReverse(false);
-            setIndex((prev) => (prev + 1) % words.length);
-            return;
-        }
-        const timeout = setTimeout(() => {
-            setSubIndex((prev) => prev + (reverse ? -1 : 1));
-        }, reverse ? 50 : speed);
-
-        return () => clearTimeout(timeout);
-    }, [subIndex, index, reverse, words, speed]);
-
-    return words[index].substring(0, subIndex);
-};
 
 const apiDocs = [
     {
@@ -356,7 +330,7 @@ const apiDocs = [
         icon: Navigation,
         method: 'GET',
         endpoint: '/api/v1/proxy/routing',
-        desc: 'Compute optimized routes, multi-stop navigation, and distance matrices using our high-performance routing engine.',
+        desc: 'Compute optimized routes, multi-stop navigation, distance matrices, and SDK-ready turn-by-turn guidance for web and mobile applications.',
         command: `curl -X GET "https://client.mapifyit.com/api/v1/proxy/routing?json={\\"locations\\":[{\\"lon\\":67.0207055,\\"lat\\":24.8546842},{\\"lon\\":73.0651511,\\"lat\\":33.6938118}],\\"costing\\":\\"auto\\"}" \\
   -H "Authorization: Bearer YOUR_API_KEY"`
     },
@@ -398,13 +372,6 @@ export default function MapsPage() {
     const [activeApi, setActiveApi] = useState(apiDocs[0].id);
     const [copied, setCopied] = useState(false);
 
-    const dynamicText = useTypewriter([
-        'Maps Developers.',
-        'Geospatial Applications.',
-        'Vector Tile Infrastructure.',
-        'Sovereign Map Data.'
-    ]);
-
     const handleCopy = (text: string) => {
         navigator.clipboard.writeText(text);
         setCopied(true);
@@ -436,7 +403,8 @@ export default function MapsPage() {
                         <h3 className="text-xl text-gray-400 max-w-4xl">
                             Build modern mapping applications using our high-performance Maps API platform.
                             Deliver vector tiles, geocoding, routing, and spatial search powered entirely by
-                            our proprietary geospatial infrastructure.
+                            our proprietary geospatial infrastructure, with advanced turn-by-turn navigation
+                            and neural voice guidance available through the built-in SDK.
                         </h3>
 
                     </Reveal>
@@ -503,11 +471,14 @@ export default function MapsPage() {
 
                             <p className="text-slate-400 text-sm mb-6">
                                 Compute optimized routes, distance matrices, and navigation paths using our
-                                proprietary routing engine built for large-scale mapping applications.
+                                proprietary routing engine built for large-scale mapping applications. Add
+                                SDK-ready turn-by-turn navigation with natural neural voice guidance for mobile
+                                and in-vehicle experiences.
                             </p>
 
                             <ul className="space-y-2 text-sm text-slate-500">
                                 <li>Multi-Stop Route Optimization</li>
+                                <li>Neural Voice Turn-by-Turn SDK</li>
                                 <li>Isochrone Generation</li>
                                 <li>Navigation Geometry Encoding</li>
                             </ul>
@@ -536,6 +507,8 @@ export default function MapsPage() {
                             Our Maps API platform replaces expensive third-party mapping providers.
                             Integrate vector tiles, geocoding, routing, and spatial search using
                             simple REST APIs while maintaining complete control over your mapping infrastructure.
+                            For navigation products, the SDK supports turn-by-turn route guidance with neural
+                            voice prompts and mobile-ready maneuver instructions.
                         </p>
 
                         <div className="bg-black/40 rounded-xl p-6 text-xs font-mono">

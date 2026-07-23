@@ -26,6 +26,7 @@ const solutions = [
         infoPoints: [
             "1-Second Live GPS Fleet Tracking",
             "Real-time Fuel Burn & Theft Alerts for Vehicles",
+            "SDK-Ready Turn-by-Turn Navigation with Neural Voice Guidance",
             "AI-Driven Predictive Maintenance Scheduling"
         ]
     },
@@ -52,6 +53,7 @@ const solutions = [
         infoPoints: [
             "Real-Time GPS-Based Agent Movement Tracking",
             "Automated Geo-Fence Attendance Verification",
+            "Built-In Navigation SDK with Natural Voice Prompts",
             "Mobile Team Task Dispatch & Optimized Routing for Field Operations"
         ]
     },
@@ -86,7 +88,7 @@ export default function SolutionsOverview() {
                         Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 px-1">Industry Leaders</span> & Enterprise Teams
                     </h2>
                     <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-                        Beyond standard mapping, we deliver specialized GIS platforms and enterprise vertical solutions. Solve complex spatial and security challenges with scalable Maps APIs and location intelligence.
+                        Beyond standard mapping, we deliver specialized GIS platforms and enterprise vertical solutions. Solve complex spatial and security challenges with scalable Maps APIs, location intelligence, and SDK-ready turn-by-turn navigation with neural voice guidance.
                     </p>
                 </div>
 

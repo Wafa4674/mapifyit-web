@@ -21,6 +21,7 @@ type BusinessPlatform = {
   type: string;
   logo: string;
   logoClassName?: string;
+  itemClassName?: string;
   lightenWordmark?: boolean;
 };
 
@@ -38,8 +39,8 @@ const businessPlatforms: BusinessPlatform[] = [
   { name: 'Sage', type: 'ERP', logo: '/platform-logos/sage.svg', logoClassName: 'h-12 w-20' },
   { name: 'Salesforce', type: 'CRM', logo: '/platform-logos/salesforce.svg', logoClassName: 'h-12 w-20' },
   { name: 'HubSpot', type: 'CRM', logo: '/platform-logos/hubspot.svg', logoClassName: 'h-10 w-20' },
-  { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-17 w-20' },
-  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-50 w-26' },
+  { name: 'Zoho CRM', type: 'CRM', logo: '/platform-logos/zoho.svg', logoClassName: 'h-14 w-[100px]' },
+  { name: 'Freshsales', type: 'CRM', logo: '/platform-logos/freshsales.svg', logoClassName: 'h-14 w-[150px]' },
 ];
 
 const heroStats = [
@@ -66,6 +67,32 @@ const heroStats = [
   },
 ];
 
+type SatelliteProvider = {
+  name: string;
+  logo: string;
+  detail: string;
+  category: string;
+  badge: string;
+};
+
+const satelliteProviders: SatelliteProvider[] = [
+  { name: 'Maxar', logo: '/satellite-logos/maxar.svg', detail: 'WorldView / Legion', category: 'Optical', badge: '~30cm' },
+  { name: 'Airbus', logo: '/satellite-logos/airbus.svg', detail: 'Pleiades Neo', category: 'Optical', badge: '30cm' },
+  { name: 'Planet', logo: '/satellite-logos/planet.svg', detail: 'SkySat + PlanetScope', category: 'Optical', badge: 'Daily' },
+  { name: 'BlackSky', logo: '/satellite-logos/blacksky.svg', detail: 'Fast tasking', category: 'Optical', badge: 'Revisit' },
+  // { name: 'SI Imaging Services', logo: '/satellite-logos/siis.svg', detail: 'KOMPSAT series', category: 'Optical', badge: 'Sub-1m' },
+  { name: '21AT', logo: '/satellite-logos/21at.svg', detail: 'BJ3 / TripleSat', category: 'Optical', badge: '~30cm' },
+  // { name: 'Satellogic', logo: '/satellite-logos/satellogic.svg', detail: 'NewSat constellation', category: 'Optical', badge: 'VHR' },
+  { name: 'EOI Space', logo: '/satellite-logos/eoi-space.svg', detail: 'Ultra-high-res', category: 'Optical', badge: '~15cm' },
+  // { name: 'Capella Space', logo: '/satellite-logos/capella.svg', detail: 'SAR monitoring', category: 'SAR', badge: 'Night' },
+  { name: 'ICEYE', logo: '/satellite-logos/iceye.svg', detail: 'Flood + disaster', category: 'SAR', badge: 'Cloud' },
+  // { name: 'TerraSAR-X', logo: '/satellite-logos/terrasar-x.svg', detail: 'Airbus radar', category: 'SAR', badge: 'Radar' },
+  // { name: 'Synspective', logo: '/satellite-logos/synspective.svg', detail: 'SAR constellation', category: 'SAR', badge: 'Radar' },
+  { name: 'Landsat 8/9', logo: '/satellite-logos/landsat.svg', detail: 'USGS / NASA', category: 'Open Data', badge: 'Free' },
+  // { name: 'Sentinel-1/2', logo: '/satellite-logos/sentinel.svg', detail: 'ESA / Copernicus', category: 'Open Data', badge: 'Free' },
+  { name: 'MODIS', logo: '/satellite-logos/modis.svg', detail: 'NASA monitoring', category: 'Open Data', badge: 'Global' },
+];
+
 function PlatformCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -89,12 +116,12 @@ function PlatformCarousel() {
       const loopPoint = getLoopPoint();
       if (!loopPoint) return;
 
-      if (carousel.scrollLeft >= loopPoint * 2) carousel.scrollLeft -= loopPoint;
-      if (carousel.scrollLeft <= 0) carousel.scrollLeft += loopPoint;
+      if (carousel.scrollLeft >= loopPoint * 3) carousel.scrollLeft -= loopPoint;
+      if (carousel.scrollLeft <= loopPoint) carousel.scrollLeft += loopPoint;
     };
 
     requestAnimationFrame(() => {
-      carousel.scrollLeft = getLoopPoint();
+      carousel.scrollLeft = getLoopPoint() * 2;
     });
 
     const moveCarousel = (currentTime: number) => {
@@ -123,13 +150,13 @@ function PlatformCarousel() {
         <div
           ref={carouselRef}
           aria-label="Supported ERP and CRM platforms"
-          className="platform-carousel flex h-16 touch-pan-x items-center gap-12 overflow-x-auto overflow-y-hidden overscroll-y-none"
+          className="platform-carousel flex h-20 touch-pan-x items-center gap-4 overflow-x-auto overflow-y-hidden overscroll-y-none"
         >
-          {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
+          {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
             <div
               key={`${platform.name}-${index}`}
-              aria-hidden={index < businessPlatforms.length || index >= businessPlatforms.length * 2}
-              className="relative flex h-16 min-w-20 shrink-0 items-center justify-center overflow-hidden px-2"
+              aria-hidden={index < businessPlatforms.length * 2 || index >= businessPlatforms.length * 3}
+              className={`relative flex h-16 min-w-[180px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/45 px-5 py-3 ${platform.itemClassName ?? ''}`}
             >
               <Image
                 src={platform.logo}
@@ -137,7 +164,7 @@ function PlatformCarousel() {
                 width={180}
                 height={64}
                 unoptimized
-                className={`${platform.logoClassName ?? 'h-10 w-36'} max-h-14 max-w-[180px] object-contain`}
+                className={`${platform.logoClassName ?? 'h-10 w-36'} max-h-16 max-w-[220px] object-contain`}
               />
               {platform.lightenWordmark && (
                 <Image
@@ -155,15 +182,112 @@ function PlatformCarousel() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .platform-carousel {
           scrollbar-width: none;
           -ms-overflow-style: none;
+          scrollbar-gutter: auto;
         }
         .platform-carousel::-webkit-scrollbar {
+          width: 0;
+          height: 0;
           display: none;
         }
       `}</style>
+    </div>
+  );
+}
+
+function SatelliteSources() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let animationFrame: number;
+    let previousTime = performance.now();
+
+    const getLoopPoint = () => {
+      const firstItem = carousel.children[0] as HTMLElement | undefined;
+      const firstDuplicate = carousel.children[satelliteProviders.length] as HTMLElement | undefined;
+
+      return firstItem && firstDuplicate
+        ? firstDuplicate.offsetLeft - firstItem.offsetLeft
+        : carousel.scrollWidth / 3;
+    };
+
+    const normalizeScroll = () => {
+      const loopPoint = getLoopPoint();
+      if (!loopPoint) return;
+
+      if (carousel.scrollLeft >= loopPoint * 3) carousel.scrollLeft -= loopPoint;
+      if (carousel.scrollLeft <= loopPoint) carousel.scrollLeft += loopPoint;
+    };
+
+    requestAnimationFrame(() => {
+      carousel.scrollLeft = getLoopPoint() * 2;
+    });
+
+    const moveCarousel = (currentTime: number) => {
+      const elapsed = Math.min(currentTime - previousTime, 50);
+      carousel.scrollLeft += elapsed * 0.025;
+      normalizeScroll();
+      previousTime = currentTime;
+      animationFrame = window.requestAnimationFrame(moveCarousel);
+    };
+
+    animationFrame = window.requestAnimationFrame(moveCarousel);
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, []);
+
+  return (
+    <div className="relative mt-10 lg:mt-12">
+      <div className="mb-5 flex items-center justify-center">
+        <p className="text-center text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
+          Satellite imagery &amp; earth observation sources
+        </p>
+      </div>
+
+      <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/55 px-6 py-5 backdrop-blur-sm">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent" />
+        <div
+          ref={carouselRef}
+          aria-label="Satellite imagery sources"
+          className="platform-carousel flex h-20 touch-pan-x items-center gap-4 overflow-x-auto overflow-y-hidden overscroll-y-none"
+        >
+          {[...satelliteProviders, ...satelliteProviders, ...satelliteProviders, ...satelliteProviders, ...satelliteProviders].map((provider, index) => (
+            <div
+              key={`${provider.name}-${index}`}
+              aria-hidden={index < satelliteProviders.length * 2 || index >= satelliteProviders.length * 3}
+              className="flex h-16 min-w-[270px] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/45 px-4 py-3"
+            >
+              <div className="flex h-11 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 px-3">
+                <Image
+                  src={provider.logo}
+                  alt={index < satelliteProviders.length ? `${provider.name} logo` : ''}
+                  width={144}
+                  height={42}
+                  unoptimized
+                  className="max-h-8 max-w-[122px] object-contain opacity-95"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="shrink-0 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-cyan-300">
+                    {provider.badge}
+                  </span>
+                  <span className="truncate text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                    {provider.category}
+                  </span>
+                </div>
+                <p className="truncate text-xs text-slate-400">{provider.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -251,6 +375,8 @@ export default function Hero() {
       </div>
 
       <PlatformCarousel />
+
+      <SatelliteSources />
 
       {/* Full-width Map Section (Isometric Preview) */}
       <div className="mt-10 lg:mt-10">

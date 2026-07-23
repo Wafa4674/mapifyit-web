@@ -95,7 +95,7 @@ export default function PricingPage() {
                             </button>
                         </div>
 
-                        <div className="text-center">
+                        {/* <div className="text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-bold uppercase tracking-[0.2em] text-blue-400 mb-6">
                                 <Zap className="w-3.5 h-3.5" /> Stop the Legacy Tax
                             </div>
@@ -108,12 +108,12 @@ export default function PricingPage() {
                             <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
                                 Avoid the "API Tax". Transparent, flat-rate subscriptions for enterprise location intelligence. No hidden overages, no vendor lock-in.
                             </p>
-                        </div>
+                        </div> */}
                     </Reveal>
                 </header>
 
                 {/* Primary Pricing Tiers */}
-                <section className="mb-20" aria-labelledby="pricing-plans-heading">
+                {/* <section className="mb-20" aria-labelledby="pricing-plans-heading">
                     <h2 id="pricing-plans-heading" className="sr-only">Our Pricing Plans</h2>
                     <Reveal delay={50}>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -152,7 +152,7 @@ export default function PricingPage() {
                             />
                         </div>
                     </Reveal>
-                </section>
+                </section> */}
 
                 {/* Glassmorphic Comparison Table */}
                 <section className="mb-20" aria-labelledby="comparison-heading">

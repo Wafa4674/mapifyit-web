@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 72" role="img" aria-label="Planet logo">
+  <rect width="240" height="72" rx="14" fill="none"/>
+  <circle cx="28" cy="36" r="17" fill="#00a86b"/>
+  <text x="56" y="48" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="-1">planet</text>
+</svg>
