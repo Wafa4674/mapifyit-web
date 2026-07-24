@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Activity, BarChart3, Gauge, ShieldCheck, Zap } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -94,48 +94,6 @@ const satelliteProviders: SatelliteProvider[] = [
 ];
 
 function PlatformCarousel() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let animationFrame: number;
-    let previousTime = performance.now();
-
-    const getLoopPoint = () => {
-      const firstItem = carousel.children[0] as HTMLElement | undefined;
-      const firstDuplicate = carousel.children[businessPlatforms.length] as HTMLElement | undefined;
-
-      return firstItem && firstDuplicate
-        ? firstDuplicate.offsetLeft - firstItem.offsetLeft
-        : carousel.scrollWidth / 3;
-    };
-
-    const normalizeScroll = () => {
-      const loopPoint = getLoopPoint();
-      if (!loopPoint) return;
-
-      if (carousel.scrollLeft >= loopPoint * 3) carousel.scrollLeft -= loopPoint;
-      if (carousel.scrollLeft <= loopPoint) carousel.scrollLeft += loopPoint;
-    };
-
-    requestAnimationFrame(() => {
-      carousel.scrollLeft = getLoopPoint() * 2;
-    });
-
-    const moveCarousel = (currentTime: number) => {
-      const elapsed = Math.min(currentTime - previousTime, 50);
-      carousel.scrollLeft += elapsed * 0.03;
-      normalizeScroll();
-      previousTime = currentTime;
-      animationFrame = window.requestAnimationFrame(moveCarousel);
-    };
-
-    animationFrame = window.requestAnimationFrame(moveCarousel);
-    return () => window.cancelAnimationFrame(animationFrame);
-  }, []);
-
   return (
     <div className="relative mt-12 lg:mt-16">
       <div className="mb-5 flex items-center justify-center">
@@ -147,15 +105,12 @@ function PlatformCarousel() {
       <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/55 px-6 py-5 backdrop-blur-sm">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent" />
-        <div
-          ref={carouselRef}
-          aria-label="Supported ERP and CRM platforms"
-          className="platform-carousel flex h-20 touch-pan-x items-center gap-4 overflow-x-auto overflow-y-hidden overscroll-y-none"
-        >
-          {[...businessPlatforms, ...businessPlatforms, ...businessPlatforms, ...businessPlatforms, ...businessPlatforms].map((platform, index) => (
+        <div aria-label="Supported ERP and CRM platforms" className="platform-carousel h-20 overflow-hidden">
+          <div className="platform-carousel-track flex h-20 w-max items-center gap-4">
+            {[...businessPlatforms, ...businessPlatforms].map((platform, index) => (
             <div
               key={`${platform.name}-${index}`}
-              aria-hidden={index < businessPlatforms.length * 2 || index >= businessPlatforms.length * 3}
+              aria-hidden={index >= businessPlatforms.length}
               className={`relative flex h-16 min-w-[180px] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/45 px-5 py-3 ${platform.itemClassName ?? ''}`}
             >
               <Image
@@ -179,6 +134,7 @@ function PlatformCarousel() {
               )}
             </div>
           ))}
+          </div>
         </div>
       </div>
 
@@ -188,10 +144,30 @@ function PlatformCarousel() {
           -ms-overflow-style: none;
           scrollbar-gutter: auto;
         }
+        .platform-carousel-track {
+          animation: platform-marquee 38s linear infinite;
+          will-change: transform;
+        }
+        .platform-carousel-track-slow {
+          animation-duration: 44s;
+        }
         .platform-carousel::-webkit-scrollbar {
           width: 0;
           height: 0;
           display: none;
+        }
+        @keyframes platform-marquee {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+          to {
+            transform: translate3d(-50%, 0, 0);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .platform-carousel-track {
+            animation: none;
+          }
         }
       `}</style>
     </div>
@@ -199,48 +175,6 @@ function PlatformCarousel() {
 }
 
 function SatelliteSources() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let animationFrame: number;
-    let previousTime = performance.now();
-
-    const getLoopPoint = () => {
-      const firstItem = carousel.children[0] as HTMLElement | undefined;
-      const firstDuplicate = carousel.children[satelliteProviders.length] as HTMLElement | undefined;
-
-      return firstItem && firstDuplicate
-        ? firstDuplicate.offsetLeft - firstItem.offsetLeft
-        : carousel.scrollWidth / 3;
-    };
-
-    const normalizeScroll = () => {
-      const loopPoint = getLoopPoint();
-      if (!loopPoint) return;
-
-      if (carousel.scrollLeft >= loopPoint * 3) carousel.scrollLeft -= loopPoint;
-      if (carousel.scrollLeft <= loopPoint) carousel.scrollLeft += loopPoint;
-    };
-
-    requestAnimationFrame(() => {
-      carousel.scrollLeft = getLoopPoint() * 2;
-    });
-
-    const moveCarousel = (currentTime: number) => {
-      const elapsed = Math.min(currentTime - previousTime, 50);
-      carousel.scrollLeft += elapsed * 0.025;
-      normalizeScroll();
-      previousTime = currentTime;
-      animationFrame = window.requestAnimationFrame(moveCarousel);
-    };
-
-    animationFrame = window.requestAnimationFrame(moveCarousel);
-    return () => window.cancelAnimationFrame(animationFrame);
-  }, []);
-
   return (
     <div className="relative mt-10 lg:mt-12">
       <div className="mb-5 flex items-center justify-center">
@@ -252,15 +186,12 @@ function SatelliteSources() {
       <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/55 px-6 py-5 backdrop-blur-sm">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-slate-950 via-slate-950/70 to-transparent" />
-        <div
-          ref={carouselRef}
-          aria-label="Satellite imagery sources"
-          className="platform-carousel flex h-20 touch-pan-x items-center gap-4 overflow-x-auto overflow-y-hidden overscroll-y-none"
-        >
-          {[...satelliteProviders, ...satelliteProviders, ...satelliteProviders, ...satelliteProviders, ...satelliteProviders].map((provider, index) => (
+        <div aria-label="Satellite imagery sources" className="platform-carousel h-20 overflow-hidden">
+          <div className="platform-carousel-track platform-carousel-track-slow flex h-20 w-max items-center gap-4">
+            {[...satelliteProviders, ...satelliteProviders].map((provider, index) => (
             <div
               key={`${provider.name}-${index}`}
-              aria-hidden={index < satelliteProviders.length * 2 || index >= satelliteProviders.length * 3}
+              aria-hidden={index >= satelliteProviders.length}
               className="flex h-16 min-w-[270px] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/45 px-4 py-3"
             >
               <div className="flex h-11 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 px-3">
@@ -286,6 +217,7 @@ function SatelliteSources() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </div>

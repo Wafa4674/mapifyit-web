@@ -155,16 +155,16 @@ export default function PricingPage() {
                 </section> */}
 
                 {/* Glassmorphic Comparison Table */}
-                <section className="mb-20" aria-labelledby="comparison-heading">
+                {/* <section className="mb-20" aria-labelledby="comparison-heading">
                     <Reveal delay={100}>
                         <div className="text-center mb-12">
                             <h2 id="comparison-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">The Mapifyit Advantage</h2>
                             <p className="text-slate-400 max-w-xl mx-auto text-lg">See exactly how we stack up against the legacy constraints of Google Maps and Mapbox.</p>
-                        </div>
+                        </div> */}
 
-                        <div className="overflow-x-auto rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] relative">
+                        {/* <div className="overflow-x-auto rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] relative"> */}
                             {/* Decorative Grid inside table container */}
-                            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-[0.03] pointer-events-none" />
+                            {/* <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat opacity-[0.03] pointer-events-none" />
 
                             <table className="w-full text-sm text-left whitespace-nowrap relative z-10">
                                 <caption className="sr-only">Comparison of mapping API plans between Mapifyit, Google Maps, and Mapbox</caption>
@@ -177,8 +177,8 @@ export default function PricingPage() {
                                         <th scope="col" className="px-8 py-6 text-slate-400">Google Maps</th>
                                         <th scope="col" className="px-8 py-6 text-slate-400">Mapbox</th>
                                     </tr>
-                                </thead>
-                                <tbody className="divide-y divide-white/10 text-slate-300">
+                                </thead> */}
+                                {/* <tbody className="divide-y divide-white/10 text-slate-300">
                                     <tr className="hover:bg-white/[0.03] transition-colors">
                                         <td className="px-8 py-5 font-semibold text-white">Free Tier <span className="text-xs text-slate-500 font-normal ml-2">(10k calls)</span></td>
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$0</td>
@@ -204,10 +204,10 @@ export default function PricingPage() {
                                         <td className="px-8 py-5 bg-blue-500/[0.02] border-x border-blue-500/10 text-white font-bold text-base">$1499</td>
                                         <td className="px-8 py-5">$3,200+ <span className="text-xs text-slate-500 block mt-1">(Pro + Overage)</span></td>
                                         <td className="px-8 py-5">$2,800+</td>
-                                    </tr>
+                                    </tr> */}
 
                                     {/* Features Comparison */}
-                                    <tr className="bg-[#0B0F17]/50 border-y-2 border-white/10">
+                                    {/* <tr className="bg-[#0B0F17]/50 border-y-2 border-white/10">
                                         <td colSpan={4} className="px-8 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">Platform Philosophy & Architecture</td>
                                     </tr>
 
@@ -242,23 +242,23 @@ export default function PricingPage() {
                                         <td className="px-8 py-5 text-amber-400/80">Used for Traffic Sets</td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
+                            </table> */}
+                        {/* </div>
                     </Reveal>
-                </section>
+                </section> */}
 
                 {/* Bento Grid Differentiators */}
-                <section aria-labelledby="differentiators-heading" className="mb-20">
+                {/* <section aria-labelledby="differentiators-heading" className="mb-20">
                     <h2 id="differentiators-heading" className="sr-only">Why choose Mapifyit</h2>
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Enterprise Architecture by Design</h2>
                         <p className="text-slate-400 max-w-xl mx-auto text-lg">We don't just sell maps. We provide the bleeding-edge infrastructure your business needs to scale globally without the limitations of traditional APIs.</p>
-                    </div>
+                    </div> */}
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-6"> */}
 
                         {/* Box 1 (Spans 2 columns) */}
-                        <Reveal className="lg:col-span-2 h-full" delay={50}>
+                        {/* <Reveal className="lg:col-span-2 h-full" delay={50}>
                             <article className="h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 hover:bg-white/[0.07] hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full group-hover:bg-blue-500/20 transition-all duration-700 pointer-events-none" />
                                 <div className="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-6">
@@ -273,10 +273,10 @@ export default function PricingPage() {
                                     <span className="px-4 py-2 rounded-full border border-white/10 bg-black/20 text-sm text-slate-300 flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> No Hidden Traps</span>
                                 </div>
                             </article>
-                        </Reveal>
+                        </Reveal> */}
 
                         {/* Box 2 */}
-                        <Reveal className="lg:col-span-1 h-full" delay={100}>
+                        {/* <Reveal className="lg:col-span-1 h-full" delay={100}>
                             <article className="h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 hover:bg-white/[0.07] hover:border-emerald-500/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full group-hover:bg-emerald-500/20 transition-all duration-700 pointer-events-none" />
                                 <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6">
@@ -289,10 +289,10 @@ export default function PricingPage() {
                                     <li className="flex items-start gap-3 text-sm text-slate-300"><div className="mt-0.5"><Check className="w-4 h-4 text-emerald-400" /></div> GDPR / Compliance Ready</li>
                                 </ul>
                             </article>
-                        </Reveal>
+                        </Reveal> */}
 
                         {/* Box 3 */}
-                        <Reveal className="lg:col-span-1 h-full" delay={150}>
+                        {/* <Reveal className="lg:col-span-1 h-full" delay={150}>
                             <article className="h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 hover:bg-white/[0.07] hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full group-hover:bg-purple-500/20 transition-all duration-700 pointer-events-none" />
                                 <div className="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-6">
@@ -304,10 +304,10 @@ export default function PricingPage() {
                                 </p>
                                 <span className="text-xs font-bold uppercase tracking-widest text-purple-400">PostgreSQL Native</span>
                             </article>
-                        </Reveal>
+                        </Reveal> */}
 
                         {/* Box 4 (Spans 2 columns) */}
-                        <Reveal className="lg:col-span-2 h-full" delay={200}>
+                        {/* <Reveal className="lg:col-span-2 h-full" delay={200}>
                             <article className="h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 hover:bg-white/[0.07] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[80px] rounded-full group-hover:bg-cyan-500/20 transition-all duration-700 pointer-events-none" />
                                 <div className="grid md:grid-cols-2 gap-8 items-center h-full">
@@ -338,10 +338,10 @@ export default function PricingPage() {
                                     </div>
                                 </div>
                             </article>
-                        </Reveal>
-
+                        </Reveal> */}
+{/* 
                     </div>
-                </section>
+                </section> */}
 
                 <Reveal delay={300}>
                     <section className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[40px] p-1 relative overflow-hidden group shadow-2xl">
