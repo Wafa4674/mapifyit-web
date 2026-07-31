@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     template: "%s | Mapifyit",
   },
   description:
-    "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+    "Looking for Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
   keywords: [
-    "Google map alternative USA",
+    "GIS, Maps alternative USA",
     "Mapbox alternative USA",
     "MapifyIt GIS platform",
     "GIS platform USA",
     "Enterprise mapping solutions USA",
-    "Geospatial platform alternative Google Maps",
+    "Geospatial platform alternative Maps",
   ],
   authors: [{ name: "Mapifyit" }],
   creator: "Mapifyit",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Mapifyit",
     title: "Top GIS and APIs maps platform in USA | MapifyIt",
     description:
-      "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: [
       {
         url: "/fullwhitebackground logo.png",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Top GIS and APIs maps platform in USA | MapifyIt",
     description:
-      "Looking for Google Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
+      "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: ["/fullwhite-background.png"],
     creator: "@mapifyit",
   },
