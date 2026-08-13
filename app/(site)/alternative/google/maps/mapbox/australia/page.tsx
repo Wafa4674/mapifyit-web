@@ -6,7 +6,7 @@ import { Layers, ShieldCheck, Route, ArrowLeft } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
 
 export const metadata: Metadata = {
-    title: 'Top GIS and APIs Maps & Mapbox Alternative in Australia | MapifyIt',
+    title: 'Enterprise GIS & Mapping Platform & Mapbox Alternative in Australia | MapifyIt',
     description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.',
     keywords: [
         'Google map alternative Australia',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         'Geospatial platform alternative Google Maps'
     ],
     openGraph: {
-        title: 'Top GIS and APIs Maps & Mapbox Alternative in Australia | MapifyIt',
+        title: 'Enterprise GIS & Mapping Platform & Mapbox Alternative in Australia | MapifyIt',
         description: 'Looking for Google Maps & Mapbox alternative in the Australia? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.',
         url: 'https://mapifyit.com/alternative/google/maps/mapbox/australia',
     },

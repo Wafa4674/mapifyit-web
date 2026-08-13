@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Top GIS and APIs maps platform in USA | MapifyIt",
+    default: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
     template: "%s | Mapifyit",
   },
   description:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://mapifyit.com",
     siteName: "Mapifyit",
-    title: "Top GIS and APIs maps platform in USA | MapifyIt",
+    title: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
     description:
       "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Top GIS and APIs maps platform in USA | MapifyIt",
+    title: "Enterprise GIS & Mapping Platform in USA | MapifyIt",
     description:
       "Looking for GIS Maps & Mapbox alternative in the USA? MapifyIt offers GIS mapping, unlimited APIs, & enterprise-grade solutions tailored for businesses.",
     images: ["/fullwhite-background.png"],
